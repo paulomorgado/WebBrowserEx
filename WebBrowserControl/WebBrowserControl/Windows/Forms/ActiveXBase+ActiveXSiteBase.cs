@@ -179,7 +179,7 @@ namespace Pajocomo.Windows.Forms
                     }
                     else if (this.Host.activeXOleInPlaceObject is UnsafeNativeMethods.IOleInPlaceObjectWindowless)
                     {
-                        throw new InvalidOperationException(ResourcesHelper.GetString("AXWindowlessControl"));
+                        throw new InvalidOperationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXWindowlessControl));
                     }
                 }
                 return NativeMethods.HRESULT.S_OK;

@@ -121,7 +121,7 @@ namespace Pajocomo.Windows.Forms
                 }
                 if (this.activeXInstance == null)
                 {
-                    throw new InvalidOperationException(ResourcesHelper.GetString("WebBrowserNoCastToIWebBrowser2"));
+                    throw new InvalidOperationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXBaseNoCastToInterface, typeof(TActiveX).FullName));
                 }
                 return this.activeXInstance;
             }
@@ -402,7 +402,7 @@ namespace Pajocomo.Windows.Forms
         {
             if (Application.OleRequired() != ApartmentState.STA)
             {
-                throw new ThreadStateException(ResourcesHelper.GetString("ThreadMustBeSTA"));
+                throw new ThreadStateException(ResourcesHelper.GetString(ResourcesHelper.ThreadMustBeSTA));
             }
             base.OnHandleCreated(e);
             if ((this.activeXReloadingState != ActiveXHelper.ActiveXState.Passive) && (this.activeXReloadingState != this.activeXState))

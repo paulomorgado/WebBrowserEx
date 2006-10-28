@@ -94,6 +94,8 @@
     <Compile Include="Windows\Forms\NativeMethods+tagXFORMCOORDS.cs" />
     <Compile Include="Windows\Forms\NativeMethods+WINDOWPOS.cs" />
     <Compile Include="Windows\Forms\NativeMethods+_POINTL.cs" />
+    <Compile Include="Windows\Forms\ResourcesCategoryAttribute.cs" />
+    <Compile Include="Windows\Forms\ResourcesDescriptionAttribute.cs" />
     <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceObjectWindowless.cs" />
     <Compile Include="Windows\Forms\UnsafeNativeMethods+IEnumOLEVERB.cs" />
     <Compile Include="Windows\Forms\UnsafeNativeMethods+IEnumUnknown.cs" />
@@ -125,6 +127,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Windows\Forms.resx">
+      <SubType>Designer</SubType>
+      <LastGenOutput>Forms.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

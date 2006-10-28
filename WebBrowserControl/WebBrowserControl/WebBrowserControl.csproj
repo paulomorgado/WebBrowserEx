@@ -7,8 +7,8 @@
     <ProjectGuid>{E5649B65-8B96-492C-877C-4F9A4D989746}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pajocomo.Windows.Forms.WebBrowserControl</RootNamespace>
-    <AssemblyName>Pajocomo</AssemblyName>
+    <RootNamespace>Pajocomo</RootNamespace>
+    <AssemblyName>Pajocomo.Windows.Forms.WebBrowserControl</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,10 +41,90 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Forms\ActiveXBase+ActiveXContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\ActiveXBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\ActiveXBase+ActiveXBaseNativeWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\ActiveXHelper+ActiveXState.cs" />
+    <Compile Include="Windows\Forms\ActiveXHelper+ActiveXEditMode.cs" />
+    <Compile Include="Windows\Forms\ActiveXHelper+Clsids.cs" />
+    <Compile Include="Windows\Forms\ActiveXHelper+EnumUnknown.cs" />
+    <Compile Include="Windows\Forms\ActiveXHelper+SelectionStyle.cs" />
+    <Compile Include="Windows\Forms\ActiveXHelper.cs" />
+    <Compile Include="Windows\Forms\ActiveXBase+ActiveXSiteBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\ApplicationShim.cs" />
+    <Compile Include="Windows\Forms\ContainerControlShim.cs" />
+    <Compile Include="Windows\Forms\ControlShim.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+POINT.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+RefreshConstants.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLECLOSE.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagCTRLINFO.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLECONTF.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLEGETMONIKER.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLEVERBATTRIB .cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLEWHICHMK.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagPALETTEENTRY.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagUSERCLASSTYPE.cs" />
+    <Compile Include="Windows\Forms\NativeMoehtods+tagDVASPECT.cs" />
+    <Compile Include="Windows\Forms\NativeMoehtods+tagDVASPECT2.cs" />
+    <Compile Include="Windows\Forms\NativeWindowShim.cs" />
+    <Compile Include="Windows\Forms\NaviveMethods+PALETTEENTRYFLAGS.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagSIZE.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOIFI.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+ActiveX.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+_RECT.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+HRESULT.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+MSG.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+SWP.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagCLSCTX.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagCONTROLINFO.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagKEYMODIFIERS.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagLOGPALETTE.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOleMenuGroupWidths.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLEVERB.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagPOINTF.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagSIZEL.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagXFORMCOORDS.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+WINDOWPOS.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+_POINTL.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceObjectWindowless.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IEnumOLEVERB.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IEnumUnknown.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleClientSite.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleContainer.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleControl.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleControlSite.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceActiveObject.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceFrame.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceObject.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceSite.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleInPlaceUIWindow.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleWindow.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IParseDisplayName.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IPropertyNotifySink.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+ISimpleFrameSite.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+OLEIVERB.cs" />
+    <Compile Include="Windows\Forms\NativeMethods.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+OLECMDEXECOPT.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+OLECMDF.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+OLECMDID.cs" />
+    <Compile Include="Windows\Forms\ResourcesHelper.cs" />
+    <Compile Include="Windows\Forms\SafeNativeMethods.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleObject.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+IWebBrowser2.cs" />
+    <Compile Include="Windows\Forms\Utils.cs" />
+    <Compile Include="Windows\Forms\WebBrowserControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,7 +15,7 @@ namespace Pajocomo.Windows.Forms
     /// <filterpriority>1</filterpriority>
     [
     ComVisible(true),
-    Designer("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),
+    //Designer("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),
     DefaultProperty("Url"),
     ClassInterface(ClassInterfaceType.AutoDispatch), DefaultEvent("DocumentCompleted"),
     Docking(DockingBehavior.AutoDock),

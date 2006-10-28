@@ -38,7 +38,6 @@ namespace WebBrowserControlSample
             this.webBrowserControl.Name = "webBrowserControl";
             this.webBrowserControl.Size = new System.Drawing.Size(292, 266);
             this.webBrowserControl.TabIndex = 0;
-            this.webBrowserControl.Text = "webBrowserControl";
             // 
             // Form1
             // 
@@ -55,6 +54,7 @@ namespace WebBrowserControlSample
         #endregion
 
         private Pajocomo.Windows.Forms.WebBrowserControl webBrowserControl;
+
     }
 }
 

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Security.Permissions;
+using System.Drawing;
 
 namespace Pajocomo.Windows.Forms
 {
@@ -14,12 +15,15 @@ namespace Pajocomo.Windows.Forms
     /// <filterpriority>1</filterpriority>
     [
     ComVisible(true),
-        //Designer("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),
+    Designer("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),
     DefaultProperty("Url"),
     ClassInterface(ClassInterfaceType.AutoDispatch), DefaultEvent("DocumentCompleted"),
     Docking(DockingBehavior.AutoDock),
-        //SRDescription("DescriptionWebBrowser"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust"),
-    PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+    ResourcesDescription("DescriptionWebBrowser"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust"),
+    ToolboxItem(true),
+    ToolboxBitmap(typeof(System.Windows.Forms.WebBrowser)),
+    PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")
+    ]
     public class WebBrowserControl : ActiveXBase<UnsafeNativeMethods.IWebBrowser2>
     {
         public UnsafeNativeMethods.IWebBrowser2 ActiveXWebBRowser2

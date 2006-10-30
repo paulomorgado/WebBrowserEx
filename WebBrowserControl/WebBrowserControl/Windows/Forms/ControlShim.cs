@@ -13,13 +13,18 @@ namespace Pajocomo.Windows.Forms
 
         static ControlShim()
         {
-            Type controlType = typeof(Control);
+            Type controlType = typeof(global::System.Windows.Forms.Control);
 
             ControlShim.createControlMethodInfo = controlType.GetMethod("CreateControl",
-                BindingFlags.Static | BindingFlags.NonPublic, null, new Type[] { typeof(bool) }, null);
+                BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[] { typeof(bool) }, null);
 
+            System.Reflection.ParameterModifier parameterModifier = new ParameterModifier(2);
+            parameterModifier[0] = false;
+            parameterModifier[1] = true;
             ControlShim.reflectMessageInternalMethodInfo = controlType.GetMethod("ReflectMessageInternal",
-                BindingFlags.Static | BindingFlags.NonPublic, null, new Type[] { typeof(IntPtr), typeof(Message) }, null);
+                BindingFlags.Static | BindingFlags.NonPublic, null,
+                new Type[] { typeof(IntPtr), typeof(Message).MakeByRefType() },
+                new ParameterModifier[] { parameterModifier });
         }
 
         internal static void CreateControl(Control control, bool fIgnoreVisible)

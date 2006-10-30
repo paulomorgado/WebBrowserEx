@@ -15,7 +15,7 @@ namespace Pajocomo.Windows.Forms
 
         static ApplicationShim()
         {
-            Type windowsFormsApplicationType = typeof(Application);
+            Type windowsFormsApplicationType = typeof(global::System.Windows.Forms.Application);
 
             ApplicationShim.windowMessagesVersionPropertyInfo = windowsFormsApplicationType.GetProperty("WindowMessagesVersion",
                 BindingFlags.Static | BindingFlags.NonPublic, null, typeof(string), new Type[] {}, null);

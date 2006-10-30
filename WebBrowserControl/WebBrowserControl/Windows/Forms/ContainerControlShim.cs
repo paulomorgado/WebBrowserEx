@@ -12,7 +12,7 @@ namespace Pajocomo.Windows.Forms
 
         static ContainerControlShim()
         {
-            Type containerControlType = typeof(ContainerControl);
+            Type containerControlType = typeof(global::System.Windows.Forms.ContainerControl);
 
             ContainerControlShim.setActiveControlInternalMethodInfo = containerControlType.GetMethod("SetActiveControlInternal",
                 BindingFlags.Static | BindingFlags.NonPublic, null, new Type[] { typeof(Control) }, null);

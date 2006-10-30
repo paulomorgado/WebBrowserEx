@@ -24,7 +24,7 @@ namespace Pajocomo.Windows.Forms
     ToolboxBitmap(typeof(System.Windows.Forms.WebBrowser)),
     PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")
     ]
-    public class WebBrowserControl : ActiveXBase<UnsafeNativeMethods.IWebBrowser2>
+    public class WebBrowserControl : ActiveXBase<UnsafeNativeMethods.WebBrowser, UnsafeNativeMethods.IWebBrowser2>
     {
         public UnsafeNativeMethods.IWebBrowser2 ActiveXWebBRowser2
         {

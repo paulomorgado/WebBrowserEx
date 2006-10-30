@@ -75,30 +75,30 @@ namespace Pajocomo.Windows.Forms
         [return: MarshalAs(UnmanagedType.Interface)]
         [DllImport("ole32.dll", ExactSpelling = true, PreserveSig = false)]
         public static extern object CoCreateInstance(
-            [In, MarshalAs(UnmanagedType.LPStruct)] ref Guid clsid,
+            [In, MarshalAs(UnmanagedType.LPStruct)] Guid clsid,
             [In, MarshalAs(UnmanagedType.Interface)] object punkOuter,
             [In, MarshalAs(UnmanagedType.I4)] NativeMethods.tagCLSCTX context,
-            [In, MarshalAs(UnmanagedType.LPStruct)] ref Guid iid);
+            [In, MarshalAs(UnmanagedType.LPStruct)] Guid iid);
 
         /// <summary>
         /// Creates a single uninitialized object of the class associated with a specified <typeparamref name="TActiveX">type</typeparamref>.
         /// </summary>
-        /// <remarks>
-        /// Wrapper to <see cref="M:CoCreateInstance"/>.
-        /// </remarks>
-        /// <typeparam name="TActiveX">The type of the instance to be created.</typeparam>
+        /// <typeparam name="TClass">Class to create instance of.</typeparam>
+        /// <typeparam name="TInterface">Interface to cast to.</typeparam>
         /// <param name="punkOuter"><see langword="null"/> if the object is not being created as part of an aggregate;
         /// otherwise, a reference to the aggregate object's IUnknown interface (the controlling IUnknown).</param>
         /// <param name="context">Context in which the code that manages the newly created object will run. The values are taken from the enumeration <see cref="TActiveX:NativeMethods.tagCLSCTX"/>.</param>
         /// <param name="iid">Reference to the identifier of the interface to be used to communicate with the object.</param>
-        /// <returns>The instance requested in <paramref name="riid"/>.</returns>
-        public static T CoCreateInstance<T>(object punkOuter, NativeMethods.tagCLSCTX context, Guid iid)
+        /// <returns>
+        /// The instance requested in <paramref name="riid"/>.
+        /// </returns>
+        /// <remarks>
+        /// Wrapper to <see cref="M:CoCreateInstance"/>.
+        /// </remarks>
+        /// <typeparam name="TActiveX">The type of the instance to be created.</typeparam>
+        public static TInterface CoCreateInstance<TClass, TInterface>(object punkOuter, NativeMethods.tagCLSCTX context, Guid iid)
         {
-            Guid clsid = typeof(T).GUID;
-            //object instance = CoCreateInstance(ref clsid, punkOuter, context, ref iid);
-            Type type = Type.GetTypeFromCLSID(typeof(T).GUID);
-            object instance = Activator.CreateInstance(type);
-            return (T)instance;
+            return (TInterface)CoCreateInstance(typeof(TClass).GUID, punkOuter, context, iid);
         }
 
         public static IntPtr GetDC(HandleRef hWnd)

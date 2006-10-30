@@ -13,6 +13,9 @@ namespace Pajocomo.Windows.Forms
 
         public const string ActiveXBaseNoCastToInterface = "ActiveXBaseNoCastToInterface";
         public const string ActiveXWindowlessControl = "AXWindowlessControl";
+        public const string ActiveXNoWindowHandle = "AXNohWnd";
+        public const string ActiveXMTAThread = "AXMTAThread";
+        public const string ActiveXDuplicateControl = "AXDuplicateControl";
         public const string ThreadMustBeSTA = "ThreadMustBeSTA";
         
         static ResourcesHelper()

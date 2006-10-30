@@ -119,6 +119,7 @@
     <Compile Include="Windows\Forms\NativeMethods+OLECMDID.cs" />
     <Compile Include="Windows\Forms\ResourcesHelper.cs" />
     <Compile Include="Windows\Forms\SafeNativeMethods.cs" />
+    <Compile Include="Windows\Forms\UnsafeNativeMethods+WebBrowser.cs" />
     <Compile Include="Windows\Forms\UnsafeNativeMethods.cs" />
     <Compile Include="Windows\Forms\UnsafeNativeMethods+IOleObject.cs" />
     <Compile Include="Windows\Forms\UnsafeNativeMethods+IWebBrowser2.cs" />

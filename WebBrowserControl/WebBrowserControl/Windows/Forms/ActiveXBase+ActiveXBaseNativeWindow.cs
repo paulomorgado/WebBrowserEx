@@ -6,17 +6,17 @@ using System.Drawing;
 
 namespace Pajocomo.Windows.Forms
 {
-    public abstract partial class ActiveXBase<TActiveX>
+    public abstract partial class ActiveXBase<TActiveXClass, TActiveXInterface>
     {
         private class ActiveXBaseNativeWindow : NativeWindow
         {
-            private ActiveXBase<TActiveX> activeXBase;
+            private ActiveXBase<TActiveXClass, TActiveXInterface> activeXBase;
 
             private ActiveXBaseNativeWindow()
             {
             }
 
-            public ActiveXBaseNativeWindow(ActiveXBase<TActiveX> activeX)
+            public ActiveXBaseNativeWindow(ActiveXBase<TActiveXClass, TActiveXInterface> activeX)
             {
                 this.activeXBase = activeX;
             }

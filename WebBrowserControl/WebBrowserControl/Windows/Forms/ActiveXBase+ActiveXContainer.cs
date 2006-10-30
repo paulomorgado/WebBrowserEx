@@ -9,19 +9,19 @@ using System.ComponentModel.Design;
 
 namespace Pajocomo.Windows.Forms
 {
-    public abstract partial class ActiveXBase<TActiveX>
+    public abstract partial class ActiveXBase<TActiveXClass, TActiveXInterface>
     {
         private class ActiveXContainer : UnsafeNativeMethods.IOleContainer, UnsafeNativeMethods.IOleInPlaceFrame
         {
-            private ActiveXBase<TActiveX> parent;
-            private ActiveXBase<TActiveX> siteActive;
-            private ActiveXBase<TActiveX> siteUIActive;
-            private ActiveXBase<TActiveX> controlInEditMode;
+            private ActiveXBase<TActiveXClass, TActiveXInterface> parent;
+            private ActiveXBase<TActiveXClass, TActiveXInterface> siteActive;
+            private ActiveXBase<TActiveXClass, TActiveXInterface> siteUIActive;
+            private ActiveXBase<TActiveXClass, TActiveXInterface> controlInEditMode;
             private List<Control> containerCache;
             private List<Control> components;
             private IContainer associatedContainer;
 
-            internal ActiveXContainer(ActiveXBase<TActiveX> parent)
+            internal ActiveXContainer(ActiveXBase<TActiveXClass, TActiveXInterface> parent)
             {
                 this.containerCache = new List<Control>();
                 this.parent = parent;
@@ -129,7 +129,7 @@ namespace Pajocomo.Windows.Forms
                     return NativeMethods.HRESULT.S_OK;
                 }
 
-                ActiveXBase<TActiveX> activeXBase = null;
+                ActiveXBase<TActiveXClass, TActiveXInterface> activeXBase = null;
                 UnsafeNativeMethods.IOleObject oleObject = pActiveObject as UnsafeNativeMethods.IOleObject;
                 if (oleObject != null)
                 {
@@ -192,7 +192,7 @@ namespace Pajocomo.Windows.Forms
                 {
                     foreach (Control component in components)
                     {
-                        ActiveXBase<TActiveX> activeXbase = component as ActiveXBase<TActiveX>;
+                        ActiveXBase<TActiveXClass, TActiveXInterface> activeXbase = component as ActiveXBase<TActiveXClass, TActiveXInterface>;
                         if (activeXbase != null)
                         {
                             if (fuseOcx)
@@ -308,7 +308,7 @@ namespace Pajocomo.Windows.Forms
                 }
             }
 
-            private bool RegisterControl(ActiveXBase<TActiveX> ctl)
+            private bool RegisterControl(ActiveXBase<TActiveXClass, TActiveXInterface> ctl)
             {
                 ISite site = ctl.Site;
                 if (site != null)
@@ -334,7 +334,7 @@ namespace Pajocomo.Windows.Forms
                 return false;
             }
 
-            internal void OnExitEditMode(ActiveXBase<TActiveX> control)
+            internal void OnExitEditMode(ActiveXBase<TActiveXClass, TActiveXInterface> control)
             {
                 if (this.controlInEditMode == control)
                 {
@@ -347,7 +347,7 @@ namespace Pajocomo.Windows.Forms
                 this.containerCache.Remove(control);
             }
 
-            internal static ActiveXContainer FindContainerForControl(ActiveXBase<TActiveX> control)
+            internal static ActiveXContainer FindContainerForControl(ActiveXBase<TActiveXClass, TActiveXInterface> control)
             {
                 if (control != null)
                 {
@@ -372,7 +372,7 @@ namespace Pajocomo.Windows.Forms
             {
                 if (this.containerCache.Contains(control))
                 {
-                    throw new ArgumentException(ResourcesHelper.GetString("AXDuplicateControl", new object[] { this.GetNameForControl(control) }), "ctl");
+                    throw new ArgumentException(ResourcesHelper.GetString(ResourcesHelper.ActiveXDuplicateControl, new object[] { this.GetNameForControl(control) }), "ctl");
                 }
                 this.containerCache.Add(control);
                 if (this.associatedContainer == null)
@@ -396,7 +396,7 @@ namespace Pajocomo.Windows.Forms
                 return (text1 ?? string.Empty);
             }
 
-            internal void OnInPlaceDeactivate(ActiveXBase<TActiveX> site)
+            internal void OnInPlaceDeactivate(ActiveXBase<TActiveXClass, TActiveXInterface> site)
             {
                 if (this.siteActive == site)
                 {
@@ -409,7 +409,7 @@ namespace Pajocomo.Windows.Forms
                 }
             }
 
-            internal void OnUIActivate(ActiveXBase<TActiveX> site)
+            internal void OnUIActivate(ActiveXBase<TActiveXClass, TActiveXInterface> site)
             {
                 if (this.siteUIActive != site)
                 {
@@ -427,7 +427,7 @@ namespace Pajocomo.Windows.Forms
                 }
             }
 
-            internal void OnUIDeactivate(ActiveXBase<TActiveX> site)
+            internal void OnUIDeactivate(ActiveXBase<TActiveXClass, TActiveXInterface> site)
             {
                 this.siteUIActive = null;
                 site.RemoveSelectionHandler();

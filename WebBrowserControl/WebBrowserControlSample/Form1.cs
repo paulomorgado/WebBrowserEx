@@ -15,13 +15,12 @@ namespace WebBrowserControlSample
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
+        private void goButton_Click(object sender, EventArgs e)
         {
-            base.OnLoad(e);
-
-            string url = "http://www.codeplex.com/";
+            object url = this.urlTextBox.Text;
+            object flags = 0;
             object nullObject = null;
-            this.webBrowserControl.ActiveXWebBRowser2.Navigate(url, ref nullObject, ref nullObject, ref nullObject, ref nullObject);
+            this.webBrowserControl.ActiveXWebBRowser2.Navigate2(ref url, ref flags, ref nullObject, ref nullObject, ref nullObject);
         }
     }
 }

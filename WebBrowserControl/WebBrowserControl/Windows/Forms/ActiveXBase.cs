@@ -15,12 +15,18 @@ using System.Globalization;
 
 namespace Pajocomo.Windows.Forms
 {
-    public abstract partial class ActiveXBase<TActiveX> : System.Windows.Forms.Control
-        where TActiveX : class
+    /// <summary>
+    /// Represents a base ActiveX control.
+    /// </summary>
+    /// <typeparam name="TActiveXClass">The ActiveX control's class.</typeparam>
+    /// <typeparam name="TActiveXInterface">The ActiveX control's interface.</typeparam>
+    public abstract partial class ActiveXBase<TActiveXClass, TActiveXInterface> : System.Windows.Forms.Control
+        where TActiveXClass : TActiveXInterface
+        where TActiveXInterface : class
     {
         #region Private Instance Fields
 
-        private TActiveX activeXInstance;
+        private TActiveXInterface activeXInstance;
         private ContainerControl containingControl;
         private Size activeXBaseChangingSize;
         private IntPtr hwndFocus;
@@ -39,7 +45,6 @@ namespace Pajocomo.Windows.Forms
         private EventHandler selectionChangeHandler;
         private ActiveXHelper.ActiveXEditMode activeXEditMode;
         private ActiveXHelper.SelectionStyle selectionStyle;
-        private bool inRtlRecreate;
 
         #endregion
 
@@ -52,11 +57,11 @@ namespace Pajocomo.Windows.Forms
             this.activeXBaseChangingSize = Size.Empty;
             if (System.Windows.Forms.Application.OleRequired() != ApartmentState.STA)
             {
-                throw new ThreadStateException(ResourcesHelper.GetString("AXMTAThread", new object[] { typeof(TActiveX).GUID }));
+                throw new ThreadStateException(ResourcesHelper.GetString(ResourcesHelper.ActiveXMTAThread, new object[] { typeof(TActiveXInterface).GUID }));
             }
             base.SetStyle(ControlStyles.UserPaint, false);
             this.activeXBaseChangingSize.Width = -1;
-            this.SetActiveXHostState(ActiveXHelper.IsMaskEdit, typeof(TActiveX).GUID.Equals(ActiveXHelper.Clsids.MaskEdit));
+            this.SetActiveXHostState(ActiveXHelper.IsMaskEdit, typeof(TActiveXInterface).GUID.Equals(ActiveXHelper.Clsids.MaskEdit));
         }
 
         #endregion
@@ -107,7 +112,7 @@ namespace Pajocomo.Windows.Forms
 
         #region Public Instance Properties
 
-        public virtual TActiveX ActiveXInstance
+        public virtual TActiveXInterface ActiveXInstance
         {
             get
             {
@@ -121,7 +126,7 @@ namespace Pajocomo.Windows.Forms
                 }
                 if (this.activeXInstance == null)
                 {
-                    throw new InvalidOperationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXBaseNoCastToInterface, typeof(TActiveX).FullName));
+                    throw new InvalidOperationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXBaseNoCastToInterface, typeof(TActiveXInterface).FullName));
                 }
                 return this.activeXInstance;
             }
@@ -530,7 +535,6 @@ namespace Pajocomo.Windows.Forms
                     {
                         this.hwndFocus = IntPtr.Zero;
                     }
-                    break;
                 default:
                     if (m.Msg == ActiveXHelper.REGMSG_MSG)
                     {
@@ -604,18 +608,6 @@ namespace Pajocomo.Windows.Forms
             return false;
         }
 
-        /// <summary>
-        /// Forces the re-creation of the handle for the control.
-        /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        protected void RecreateHandle()
-        {
-            if (!this.inRtlRecreate)
-            {
-                base.RecreateHandle();
-            }
-        }
-
         #endregion
 
         #region Internal Instance Methods
@@ -662,7 +654,7 @@ namespace Pajocomo.Windows.Forms
                                     this.numberOfComponentChangeEvents--;
                                 }
                                 this.activeXState = ActiveXHelper.ActiveXState.Passive;
-                                break;
+                                continue;
                             case ActiveXHelper.ActiveXState.Running:
                                 this.StopEvents();
                                 ActiveXContainer activeXContainer = this.GetParentContainer();
@@ -672,7 +664,7 @@ namespace Pajocomo.Windows.Forms
                                 }
                                 this.activeXOleObject.SetClientSite(null);
                                 this.activeXState = ActiveXHelper.ActiveXState.Loaded;
-                                break;
+                                continue;
                             case (ActiveXHelper.ActiveXState.Running | ActiveXHelper.ActiveXState.Loaded):
                                 break;
                             case ActiveXHelper.ActiveXState.InPlaceActive:
@@ -683,11 +675,11 @@ namespace Pajocomo.Windows.Forms
                                 }
                                 this.activeXOleInPlaceObject.InPlaceDeactivate();
                                 this.activeXState = ActiveXHelper.ActiveXState.Running;
-                                break;
+                                continue;
                             case ActiveXHelper.ActiveXState.UIActive:
                                 this.activeXOleInPlaceObject.UIDeactivate();
                                 this.activeXState = ActiveXHelper.ActiveXState.InPlaceActive;
-                                break;
+                                continue;
                         }
                         this.activeXState -= ActiveXHelper.ActiveXState.Loaded;
                     }
@@ -711,10 +703,10 @@ namespace Pajocomo.Windows.Forms
                         switch (this.activeXState)
                         {
                             case ActiveXHelper.ActiveXState.Passive:
-                                this.activeXInstance = UnsafeNativeMethods.CoCreateInstance<TActiveX>(null, NativeMethods.tagCLSCTX.CLSCTX_INPROC_SERVER, NativeMethods.ActiveX.IID_IUnknown);
+                                this.activeXInstance = UnsafeNativeMethods.CoCreateInstance<TActiveXClass, TActiveXInterface>(null, NativeMethods.tagCLSCTX.CLSCTX_INPROC_SERVER, NativeMethods.ActiveX.IID_IUnknown);
                                 this.activeXState = ActiveXHelper.ActiveXState.Loaded;
                                 this.AttachInterfacesInternal();
-                                break;
+                                continue;
                             case ActiveXHelper.ActiveXState.Loaded:
                                 int miscStatus = 0;
                                 if (NativeMethods.Succeeded(this.activeXOleObject.GetMiscStatus(NativeMethods.tagDVASPECT.DVASPECT_CONTENT, out miscStatus))
@@ -727,7 +719,7 @@ namespace Pajocomo.Windows.Forms
                                     this.StartEvents();
                                 }
                                 this.activeXState = ActiveXHelper.ActiveXState.Running;
-                                break;
+                                continue;
                             case ActiveXHelper.ActiveXState.Running:
                                 try
                                 {
@@ -735,22 +727,22 @@ namespace Pajocomo.Windows.Forms
                                 }
                                 catch (Exception exception1)
                                 {
-                                    throw new TargetInvocationException(ResourcesHelper.GetString("AXNohWnd", new object[] { base.GetType().Name }), exception1);
+                                    throw new TargetInvocationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXNoWindowHandle, new object[] { base.GetType().Name }), exception1);
                                 }
                                 ControlShim.CreateControl(this, true);
                                 this.activeXState = ActiveXHelper.ActiveXState.InPlaceActive;
-                                break;
+                                continue;
                             case ActiveXHelper.ActiveXState.InPlaceActive:
                                 try
                                 {
                                     this.DoVerb(NativeMethods.OLEIVERB.OLEIVERB_UIACTIVATE);
                                 }
-                                catch (Exception exception1)
+                                catch (Exception ex)
                                 {
-                                    throw new TargetInvocationException(ResourcesHelper.GetString("AXNohWnd", new object[] { base.GetType().Name }), exception1);
+                                    throw new TargetInvocationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXNoWindowHandle, new object[] { base.GetType().Name }), ex);
                                 }
                                 this.activeXState = ActiveXHelper.ActiveXState.UIActive;
-                                break;
+                                continue;
                         }
                         //this.activeXState += ActiveXHelper.ActiveXState.Loaded;
                         this.activeXState = (ActiveXHelper.ActiveXState)((int)(this.activeXState) + (int)(ActiveXHelper.ActiveXState.Loaded));

@@ -8,7 +8,7 @@ using System.ComponentModel.Design;
 
 namespace Pajocomo.Windows.Forms
 {
-    public abstract partial class ActiveXBase<TActiveX>
+    public abstract partial class ActiveXBase<TActiveXClass, TActiveXInterface>
     {
         protected class ActiveXSiteBase :
             IDisposable,
@@ -18,7 +18,7 @@ namespace Pajocomo.Windows.Forms
             UnsafeNativeMethods.IPropertyNotifySink,
             UnsafeNativeMethods.ISimpleFrameSite
         {
-            private ActiveXBase<TActiveX> host;
+            private ActiveXBase<TActiveXClass, TActiveXInterface> host;
             private AxHost.ConnectionPointCookie connectionPoint;
 
             #region Instance lifecycle
@@ -27,7 +27,7 @@ namespace Pajocomo.Windows.Forms
             {
             }
 
-            internal ActiveXSiteBase(ActiveXBase<TActiveX> host)
+            internal ActiveXSiteBase(ActiveXBase<TActiveXClass, TActiveXInterface> host)
             {
                 if (host == null)
                 {
@@ -69,7 +69,7 @@ namespace Pajocomo.Windows.Forms
                 return 0;
             }
 
-            protected internal ActiveXBase<TActiveX> Host
+            protected internal ActiveXBase<TActiveXClass, TActiveXInterface> Host
             {
                 get
                 {

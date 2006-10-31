@@ -42,7 +42,7 @@ namespace Pajocomo.Windows.Forms
 
             protected override void WndProc(ref Message m)
             {
-                if (m.Msg == 70)
+                if (m.Msg == NativeMethods.WM_WINDOWPOSCHANGING)
                 {
                     this.WmWindowPosChanging(ref m);
                 }

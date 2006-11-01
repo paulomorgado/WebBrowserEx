@@ -55,7 +55,12 @@ namespace Pajocomo.Windows.Forms
             /// <param name="postData">Pointer to data to send with the HTTP POST transaction.</param>
             /// <param name="headers">Pointer to a value that contains the HTTP headers to send to the server.</param>
             [DispId(0x68)]
-            void Navigate([In] string Url, [In] ref object flags, [In] ref object targetFrameName, [In] ref object postData, [In] ref object headers);
+            void Navigate(
+                [In, MarshalAs(UnmanagedType.BStr)] string Url,
+                [In] ref object flags,
+                [In] ref object targetFrameName,
+                [In] ref object postData,
+                [In] ref object headers);
 
             /// <summary>
             /// Reloads the file that is currently displayed in the object.
@@ -68,7 +73,8 @@ namespace Pajocomo.Windows.Forms
             /// </summary>
             /// <param name="level">One of the <see cref="NativeMethods.RefreshConstants"/> enumeration values.</param>
             [DispId(0x69)]
-            void Refresh2([In] ref object level);
+            void Refresh2(
+                [In] ref object level);
 
             /// <summary>
             /// Cancels any pending navigation or download operation and stops any dynamic page elements, such as background sounds and animations.
@@ -81,28 +87,44 @@ namespace Pajocomo.Windows.Forms
             /// </summary>
             /// <value>A variable of type IDispatch interface that receives the automation object..</value>
             [DispId(200)]
-            object Application { [return: MarshalAs(UnmanagedType.IDispatch)] get; }
+            object Application
+            {
+                [return: MarshalAs(UnmanagedType.IDispatch)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the parent of the object.
             /// </summary>
             /// <value>A variable of type IDispatch interface that receives the parent.</value>
             [DispId(0xc9)]
-            object Parent { [return: MarshalAs(UnmanagedType.IDispatch)] get; }
+            object Parent
+            {
+                [return: MarshalAs(UnmanagedType.IDispatch)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves an object reference to a container.
             /// </summary>
             /// <value>A variable of type IDispatch interface that receives the reference to the container.</value>
             [DispId(0xca)]
-            object Container { [return: MarshalAs(UnmanagedType.IDispatch)] get; }
+            object Container
+            {
+                [return: MarshalAs(UnmanagedType.IDispatch)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the automation object of the active document, if any.
             /// </summary>
             /// <value>The automation object of the active document.</value>
             [DispId(0xcb)]
-            object Document { [return: MarshalAs(UnmanagedType.IDispatch)] get; }
+            object Document
+            {
+                [return: MarshalAs(UnmanagedType.IDispatch)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves a value that indicates whether the object is a top-level container.
@@ -111,56 +133,92 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object is a top-level container; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0xcc)]
-            bool TopLevelContainer { get; }
+            bool TopLevelContainer
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the type name of the contained document object—that is, Microsoft Windows HTML Viewer.
             /// </summary>
             /// <value>The type name of the contained document object—that is, Microsoft Windows HTML Viewer.</value>
             [DispId(0xcd)]
-            string Type { get; }
+            string Type
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Sets or retrieves the screen coordinate of the left edge of the main window of the object.
             /// </summary>
             /// <value>The screen coordinate of the left edge of the main window of the object.</value>
             [DispId(0xce)]
-            int Left { get; set; }
+            int Left
+            {
+                [return: MarshalAs(UnmanagedType.I4)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves the screen coordinate of the top edge of the main window of the object.
             /// </summary>
             /// <value>The screen coordinate of the top edge of the main window of the object.</value>
             [DispId(0xcf)]
-            int Top { get; set; }
+            int Top
+            {
+                [return: MarshalAs(UnmanagedType.I4)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves the width of the main window for the object.
             /// </summary>
             /// <value>The width of the main window for the object.</value>
             [DispId(0xd0)]
-            int Width { get; set; }
+            int Width
+            {
+                [return: MarshalAs(UnmanagedType.I4)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves the height of the Microsoft Internet Explorer main window.
             /// </summary>
             /// <value>The height of the Microsoft Internet Explorer main window.</value>
             [DispId(0xd1)]
-            int Height { get; set; }
+            int Height
+            {
+                [return: MarshalAs(UnmanagedType.I4)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Retrieves the name of the resource that Microsoft Internet Explorer is currently displaying.
             /// </summary>
             /// <value>The name of the resource that Microsoft Internet Explorer is currently displaying.</value>
             [DispId(210)]
-            string LocationName { get; }
+            string LocationName
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the URL of the resource that Microsoft Internet Explorer is currently displaying.
             /// </summary>
             /// <value>The location URL.</value>
             [DispId(0xd3)]
-            string LocationURL { get; }
+            string LocationURL
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves a BOOL value indicating whether the object is engaged in a navigation or downloading operation.
@@ -169,7 +227,11 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object is engaged in a navigation or downloading operation; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0xd4)]
-            bool Busy { get; }
+            bool Busy
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+            }
 
             /// <summary>
             /// Closes the object.
@@ -186,7 +248,9 @@ namespace Pajocomo.Windows.Forms
             /// <param name="pcx">Pointer to the x-coordinate of the point to convert, in client coordinates.</param>
             /// <param name="pcy">Pointer to the y-coordinate of the point to convert, in client coordinates.</param>
             [DispId(0x12d)]
-            void ClientToWindow(out int pcx, out int pcy);
+            void ClientToWindow(
+                [Out, MarshalAs(UnmanagedType.BStr)] out int pcx,
+                [Out, MarshalAs(UnmanagedType.BStr)] out int pcy);
 
             /// <summary>
             /// Sets the value of a property associated with the object.
@@ -194,7 +258,9 @@ namespace Pajocomo.Windows.Forms
             /// <param name="property">The name of the property to set.</param>
             /// <param name="vtValue">the new value of the property.</param>
             [DispId(0x12e)]
-            void PutProperty([In] string property, [In] object vtValue);
+            void PutProperty(
+                [In, MarshalAs(UnmanagedType.BStr)] string property,
+                [In] object vtValue);
 
             /// <summary>
             /// Retrieves the value of a property associated with the given object.
@@ -202,35 +268,52 @@ namespace Pajocomo.Windows.Forms
             /// <param name="property">The name of the property to retrieve.</param>
             /// <returns>The value associated with the given property.</returns>
             [DispId(0x12f)]
-            object GetProperty([In] string property);
+            object GetProperty(
+                [In, MarshalAs(UnmanagedType.BStr)] string property);
 
             /// <summary>
             /// Retrieves the name of the object that contains the WebBrowser Control used by Microsoft Internet Explorer.
             /// </summary>
             /// <value>The name of the object that contains the WebBrowser Control used by Microsoft Internet Explorer.</value>
             [DispId(0)]
-            string Name { get; }
+            string Name
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the handle of the Microsoft Internet Explorer main window.
             /// </summary>
             /// <value>The handle of the Microsoft Internet Explorer main window.</value>
             [DispId(-515)]
-            int HWND { get; }
+            int HWND
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the fully qualified path of the Microsoft Internet Explorer executable file.
             /// </summary>
             /// <value>The fully qualified path of the Microsoft Internet Explorer executable file.</value>
             [DispId(400)]
-            string FullName { get; }
+            string FullName
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Retrieves the full path to the object.
             /// </summary>
             /// <value>The full path to the object.</value>
             [DispId(0x191)]
-            string Path { get; }
+            string Path
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object is visible or hidden.
@@ -239,7 +322,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object is visible; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x192)]
-            bool Visible { get; set; }
+            bool Visible
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the status bar for the object is visible.
@@ -248,14 +336,24 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the status bar for the object is visible; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x193)]
-            bool StatusBar { get; set; }
+            bool StatusBar
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves the text in the status bar for the object.
             /// </summary>
             /// <value>The status text.</value>
             [DispId(0x194)]
-            string StatusText { get; set; }
+            string StatusText
+            {
+                [return: MarshalAs(UnmanagedType.BStr)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the toolbar for the object is visible.
@@ -264,7 +362,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the toolbar for the object is visible; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x195)]
-            bool ToolBar { get; set; }
+            bool ToolBar
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a VARIANT_BOOL value that indicates whether the Microsoft Internet Explorer menu bar is visible.
@@ -273,7 +376,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the Microsoft Internet Explorer menu bar is visible; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x196)]
-            bool MenuBar { get; set; }
+            bool MenuBar
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a VARIANT_BOOL value that indicates whether Microsoft Internet Explorer is in full-screen or normal window mode.
@@ -282,7 +390,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if Internet Explorer is in normal window mode; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x197)]
-            bool FullScreen { get; set; }
+            bool FullScreen
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Navigates the browser to a location that might not be able to be expressed as a URL, such as a pointer to an item identifier list (PIDL) for an entity in the Microsoft Windows shell namespace.
@@ -293,7 +406,12 @@ namespace Pajocomo.Windows.Forms
             /// <param name="postData">Pointer to data to send with the HTTP POST transaction.</param>
             /// <param name="headers">Pointer to a value that contains the HTTP headers to send to the server.</param>
             [DispId(500)]
-            void Navigate2([In] ref object URL, [In] ref object flags, [In] ref object targetFrameName, [In] ref object postData, [In] ref object headers);
+            void Navigate2(
+                [In] ref object URL,
+                [In] ref object flags,
+                [In] ref object targetFrameName,
+                [In] ref object postData,
+                [In] ref object headers);
 
             /// <summary>
             /// Queries the OLE object for the status of commands using the IOleCommandTarget::QueryStatus method.
@@ -301,7 +419,8 @@ namespace Pajocomo.Windows.Forms
             /// <param name="cmdID"><see cref="NativeMethods.OLECMDID"/> value of the command for which the caller needs status information.</param>
             /// <returns>Pointer to an <see cref="NativeMethods.OLECMDF"/> value that receives the status of the command.</returns>
             [DispId(0x1f5)]
-            NativeMethods.OLECMDF QueryStatusWB([In] NativeMethods.OLECMDID cmdID);
+            NativeMethods.OLECMDF QueryStatusWB(
+                [In] NativeMethods.OLECMDID cmdID);
 
             /// <summary>
             /// Executes a command on an OLE object and returns the status of the command execution using the <see cref="IOleCommandTarget"/> interface.
@@ -311,7 +430,11 @@ namespace Pajocomo.Windows.Forms
             /// <param name="pvaIn">Structure that contains command input arguments.</param>
             /// <param name="pvaOut">Structure that receives and specifies command output.</param>
             [DispId(0x1f6)]
-            void ExecWB([In] NativeMethods.OLECMDID cmdID, [In] NativeMethods.OLECMDEXECOPT cmdexecopt, ref object pvaIn, IntPtr pvaOut);
+            void ExecWB(
+                [In] NativeMethods.OLECMDID cmdID,
+                [In] NativeMethods.OLECMDEXECOPT cmdexecopt,
+                ref object pvaIn,
+                IntPtr pvaOut);
 
             /// <summary>
             /// Shows or hides a specified browser bar.
@@ -320,14 +443,21 @@ namespace Pajocomo.Windows.Forms
             /// <param name="pvarShow">Specifies if the browser bar should be shown or hidden.</param>
             /// <param name="pvarSize">Not currently used.</param>
             [DispId(0x1f7)]
-            void ShowBrowserBar([In] ref object pvaClsid, [In] ref object pvarShow, [In] ref object pvarSize);
+            void ShowBrowserBar(
+                [In] ref object pvaClsid,
+                [In] ref object pvarShow,
+                [In] ref object pvarSize);
 
             /// <summary>
             /// Retrieves the ready state of the object.
             /// </summary>
             /// <value>The ready state of the object.</value>
             [DispId(-525)]
-            System.Windows.Forms.WebBrowserReadyState ReadyState { get; }
+            System.Windows.Forms.WebBrowserReadyState ReadyState
+            {
+                [return: MarshalAs(UnmanagedType.I4)]
+                get;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object is currently operating in offline mode.
@@ -336,7 +466,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object is currently operating in offline mode; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(550)]
-            bool Offline { get; set; }
+            bool Offline
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object can show dialog boxes.
@@ -345,7 +480,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if dialog boxes are not shown; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x227)]
-            bool Silent { get; set; }
+            bool Silent
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object is registered as a top-level browser for target name resolution.
@@ -354,7 +494,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object is registered as a top-level browser; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x228)]
-            bool RegisterAsBrowser { get; set; }
+            bool RegisterAsBrowser
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object is registered as a drop target for navigation.
@@ -363,7 +508,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object registered as a drop target; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x229)]
-            bool RegisterAsDropTarget { get; set; }
+            bool RegisterAsDropTarget
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object is in theater mode.
@@ -372,7 +522,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object is in theater mode; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x22a)]
-            bool TheaterMode { get; set; }
+            bool TheaterMode
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves whether the address bar of the object is visible or hidden.
@@ -381,7 +536,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if address bar of the object is visible; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x22b)]
-            bool AddressBar { get; set; }
+            bool AddressBar
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
 
             /// <summary>
             /// Sets or retrieves a value that indicates whether the object can be resized.
@@ -390,7 +550,12 @@ namespace Pajocomo.Windows.Forms
             /// 	<see langword="true"/> if the object can be resized; otherwise, <see langword="false"/>.
             /// </value>
             [DispId(0x22c)]
-            bool Resizable { get; set; }
+            bool Resizable
+            {
+                [return: MarshalAs(UnmanagedType.VariantBool)]
+                get;
+                set;
+            }
         }
     }
 }

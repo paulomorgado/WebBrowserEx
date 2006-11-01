@@ -28,20 +28,12 @@ namespace WebBrowserControlSample
         /// </summary>
         private void InitializeComponent()
         {
-            this.webBrowserControl = new Pajocomo.Windows.Forms.WebBrowserControl();
             this.inputPanel = new System.Windows.Forms.Panel();
-            this.urlTextBox = new System.Windows.Forms.TextBox();
             this.goButton = new System.Windows.Forms.Button();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
+            this.webBrowserControl = new Pajocomo.Windows.Forms.WebBrowserControl();
             this.inputPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // webBrowserControl
-            // 
-            this.webBrowserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserControl.Location = new System.Drawing.Point(0, 32);
-            this.webBrowserControl.Name = "webBrowserControl";
-            this.webBrowserControl.Size = new System.Drawing.Size(292, 234);
-            this.webBrowserControl.TabIndex = 0;
             // 
             // inputPanel
             // 
@@ -50,8 +42,19 @@ namespace WebBrowserControlSample
             this.inputPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.inputPanel.Location = new System.Drawing.Point(0, 0);
             this.inputPanel.Name = "inputPanel";
-            this.inputPanel.Size = new System.Drawing.Size(292, 32);
+            this.inputPanel.Size = new System.Drawing.Size(792, 32);
             this.inputPanel.TabIndex = 1;
+            // 
+            // goButton
+            // 
+            this.goButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.goButton.Location = new System.Drawing.Point(756, 4);
+            this.goButton.Name = "goButton";
+            this.goButton.Size = new System.Drawing.Size(33, 20);
+            this.goButton.TabIndex = 1;
+            this.goButton.Text = "GO";
+            this.goButton.UseVisualStyleBackColor = true;
+            this.goButton.Click += new System.EventHandler(this.goButton_Click);
             // 
             // urlTextBox
             // 
@@ -61,28 +64,26 @@ namespace WebBrowserControlSample
             this.urlTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
             this.urlTextBox.Location = new System.Drawing.Point(4, 4);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(246, 20);
+            this.urlTextBox.Size = new System.Drawing.Size(746, 20);
             this.urlTextBox.TabIndex = 0;
-            this.urlTextBox.Text = "http://www.codeplex.com/";
+            this.urlTextBox.Text = "http://www.live.com/";
             // 
-            // goButton
+            // webBrowserControl
             // 
-            this.goButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.goButton.Location = new System.Drawing.Point(256, 4);
-            this.goButton.Name = "goButton";
-            this.goButton.Size = new System.Drawing.Size(33, 20);
-            this.goButton.TabIndex = 1;
-            this.goButton.Text = "GO";
-            this.goButton.UseVisualStyleBackColor = true;
-            this.goButton.Click += new System.EventHandler(this.goButton_Click);
+            this.webBrowserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserControl.Location = new System.Drawing.Point(0, 32);
+            this.webBrowserControl.Name = "webBrowserControl";
+            this.webBrowserControl.Size = new System.Drawing.Size(792, 534);
+            this.webBrowserControl.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.ClientSize = new System.Drawing.Size(792, 566);
             this.Controls.Add(this.webBrowserControl);
             this.Controls.Add(this.inputPanel);
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "Form1";
             this.Text = "Form1";
             this.inputPanel.ResumeLayout(false);

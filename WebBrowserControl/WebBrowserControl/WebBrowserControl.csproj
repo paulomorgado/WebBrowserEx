@@ -63,11 +63,13 @@
     <Compile Include="Windows\Forms\ContainerControlShim.cs" />
     <Compile Include="Windows\Forms\ControlShim.cs" />
     <Compile Include="Windows\Forms\NativeMethods+POINT.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+RECT.cs" />
     <Compile Include="Windows\Forms\NativeMethods+RefreshConstants.cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagOLECLOSE.cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagCTRLINFO.cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagOLECONTF.cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagOLEGETMONIKER.cs" />
+    <Compile Include="Windows\Forms\NativeMethods+tagOLEMISC.cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagOLEVERBATTRIB .cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagOLEWHICHMK.cs" />
     <Compile Include="Windows\Forms\NativeMethods+tagPALETTEENTRY.cs" />

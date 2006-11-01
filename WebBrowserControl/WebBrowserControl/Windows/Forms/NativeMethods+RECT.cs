@@ -11,7 +11,7 @@ namespace Pajocomo.Windows.Forms
         /// Defines the coordinates of the upper-left and lower-right corners of a rectangle.
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
-        public class _RECT
+        public struct RECT
         {
             /// <summary>
             /// Specifies the x-coordinate of the upper-left corner of the rectangle.
@@ -34,30 +34,23 @@ namespace Pajocomo.Windows.Forms
             public int bottom;
 
             /// <summary>
-            /// Creates a new <see cref="_RECT"/> instance given the <paramref name="x"/>, <paramref name="y"/>, <paramref name="width"/> and <paramref name="height"/>.
+            /// Creates a new <see cref="RECT"/> instance given the <paramref name="x"/>, <paramref name="y"/>, <paramref name="width"/> and <paramref name="height"/>.
             /// </summary>
             /// <param name="x">The x-coordinate of the upper-left corner of the rectangle.</param>
             /// <param name="y">The y-coordinate of the upper-left corner of the rectangle.</param>
             /// <param name="width">The width of the rectangle.</param>
             /// <param name="height">The height of the rectangle.</param>
             /// <returns></returns>
-            public static NativeMethods._RECT FromXYWH(int x, int y, int width, int height)
+            public static NativeMethods.RECT FromXYWH(int x, int y, int width, int height)
             {
-                return new NativeMethods._RECT(x, y, x + width, y + height);
+                return new NativeMethods.RECT(x, y, x + width, y + height);
             }
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="COMRECT"/> class.
-            /// </summary>
-            public _RECT()
-            {
-            }
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="_RECT"/> class given a <see cref="TActiveX:System.Drawing.Rectangle"/> instance.
+            /// Initializes a new instance of the <see cref="RECT"/> class given a <see cref="TActiveX:System.Drawing.Rectangle"/> instance.
             /// </summary>
             /// <param name="r">A <see cref="TActiveX:System.Drawing.Rectangle"/>.</param>
-            public _RECT(System.Drawing.Rectangle r)
+            public RECT(System.Drawing.Rectangle r)
             {
                 this.left = r.X;
                 this.top = r.Y;
@@ -72,7 +65,7 @@ namespace Pajocomo.Windows.Forms
             /// <param name="top">The y-coordinate of upper-left corner of the rectangle.</param>
             /// <param name="right">The x-coordinate of the lower-right corner of the rectangle.</param>
             /// <param name="bottom">The y-coordinate of the lower-right corner of the rectangle.</param>
-            public _RECT(int left, int top, int right, int bottom)
+            public RECT(int left, int top, int right, int bottom)
             {
                 this.left = left;
                 this.top = top;

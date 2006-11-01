@@ -23,9 +23,8 @@ namespace Pajocomo.Windows.Forms
             /// Controls enabling of context-sensitive help.
             /// </summary>
             /// <param name="fEnterMode">Indicator of whether the control is entering context-sensitive help mode (<see langword="true"/>) or leaving it (<see langword="false"/>).</param>
-            /// <returns>This method supports the standard return values.</returns>
-            [PreserveSig]
-            int ContextSensitiveHelp(bool fEnterMode);
+            void ContextSensitiveHelp(
+                [In, MarshalAs(UnmanagedType.Bool)] bool fEnterMode);
         }
     }
 }

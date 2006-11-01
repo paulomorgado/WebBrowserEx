@@ -27,7 +27,8 @@ namespace Pajocomo.Windows.Forms
         public const int WM_SYSCOLORCHANGE = 0x15;
         public const int WM_ENDSESSION = 0x16;
         public const int WM_SHOWWINDOW = 0x18;
-        public const int WM_SETTINGCHANGE = 0x1A;
+        public const int WM_WININICHANGE = 0x1A;
+        public const int WM_SETTINGCHANGE = WM_WININICHANGE;
         public const int WM_ACTIVATEAPP = 0x1C;
         public const int WM_FONTCHANGE = 0x1D;
         public const int WM_TIMECHANGE = 0x1E;
@@ -42,6 +43,8 @@ namespace Pajocomo.Windows.Forms
         public const int WM_SETHOTKEY = 0x32;
         public const int WM_GETHOTKEY = 0x33;
         public const int WM_GETOBJECT = 0x3D;
+        public const int WM_WINDOWPOSCHANGING = 0x46;
+        public const int WM_WINDOWPOSCHANGED = 0x47;
         public const int WM_HELP = 0x53;
         public const int WM_CONTEXTMENU = 0x7B;
         public const int WM_GETICON = 0x7F;
@@ -213,9 +216,6 @@ namespace Pajocomo.Windows.Forms
         public const int WM_VKEYTOITEM = 0x2E;
         public const int WM_VSCROLL = 0x115;
         public const int WM_VSCROLLCLIPBOARD = 0x30A;
-        public const int WM_WINDOWPOSCHANGED = 0x47;
-        public const int WM_WINDOWPOSCHANGING = 0x46;
-        public const int WM_WININICHANGE = 0x1A;
         public const int WM_XBUTTONDBLCLK = 0x20D;
         public const int WM_XBUTTONDOWN = 0x20B;
         public const int WM_XBUTTONUP = 0x20C;
@@ -225,12 +225,7 @@ namespace Pajocomo.Windows.Forms
         /// </summary>
         public static readonly HandleRef NullHandleRef = new HandleRef(null, IntPtr.Zero);
 
-        public static bool Succeeded(IntPtr ptr)
-        {
-            return (ptr != IntPtr.Zero);
-        }
-
-        public static bool Succeeded(int hr)
+        public static bool Succeeded(HRESULT hr)
         {
             return (hr >= HRESULT.S_OK);
         }

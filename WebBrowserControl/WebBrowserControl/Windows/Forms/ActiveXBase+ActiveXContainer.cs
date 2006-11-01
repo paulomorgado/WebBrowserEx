@@ -29,95 +29,69 @@ namespace Pajocomo.Windows.Forms
 
             #region IOleContainer Members
 
-            int UnsafeNativeMethods.IOleContainer.EnumObjects(NativeMethods.tagOLECONTF grfFlags, out UnsafeNativeMethods.IEnumUnknown ppenum)
+            #region IParseDisplayName Members
+
+            void UnsafeNativeMethods.IOleContainer/*.IParseDisplayName*/.ParseDisplayName(object pbc, string pszDisplayName, int[] pchEaten, object[] ppmkOut)
             {
-                ppenum = null;
+                throw new COMException("IOleContainer", (int)NativeMethods.HRESULT.E_NOTIMPL);
+            }
+
+            #endregion
+
+            UnsafeNativeMethods.IEnumUnknown UnsafeNativeMethods.IOleContainer.EnumObjects(NativeMethods.tagOLECONTF grfFlags)
+            {
                 if ((grfFlags & NativeMethods.tagOLECONTF.OLECONTF_EMBEDDINGS) != 0)
                 {
                     List<object> list = new List<object>();
                     this.ListActiveXControls(list, true);
                     if (list.Count > 0)
                     {
-                        ppenum = new ActiveXHelper.EnumUnknown(list.ToArray());
-                        return 0;
+                        return new ActiveXHelper.EnumUnknown(list.ToArray());
                     }
                 }
-                ppenum = new ActiveXHelper.EnumUnknown(null);
-                return NativeMethods.HRESULT.S_OK;
+                return new ActiveXHelper.EnumUnknown(null);
             }
 
-            int UnsafeNativeMethods.IOleContainer.LockContainer(bool fLock)
+            void UnsafeNativeMethods.IOleContainer.LockContainer(bool fLock)
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
-            }
-
-            #endregion
-
-            #region IParseDisplayName Members
-
-            int UnsafeNativeMethods.IParseDisplayName.ParseDisplayName(object pbc, string pszDisplayName, int[] pchEaten, object[] ppmkOut)
-            {
-                if (ppmkOut != null)
-                {
-                    ppmkOut[0] = null;
-                }
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleContainer", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
             #endregion
 
             #region IOleInPlaceFrame Members
 
-            int UnsafeNativeMethods.IOleInPlaceFrame.InsertMenus(IntPtr hmenuShared, NativeMethods.tagOleMenuGroupWidths lpMenuWidths)
+            #region IOleInPlaceUIWindow Members
+
+            #region IOleWindow Members
+
+            IntPtr UnsafeNativeMethods.IOleInPlaceFrame/*IOleWindow*/.GetWindow()
             {
-                return NativeMethods.HRESULT.S_OK;
+                return this.parent.Handle;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceFrame.SetMenu(IntPtr hmenuShared, IntPtr holemenu, IntPtr hwndActiveObject)
+            void UnsafeNativeMethods.IOleInPlaceFrame/*IOleWindow*/.ContextSensitiveHelp(bool fEnterMode)
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
-            }
-
-            int UnsafeNativeMethods.IOleInPlaceFrame.RemoveMenus(IntPtr hmenuShared)
-            {
-                return NativeMethods.HRESULT.E_NOTIMPL;
-            }
-
-            int UnsafeNativeMethods.IOleInPlaceFrame.SetStatusText(string pszStatusText)
-            {
-                return NativeMethods.HRESULT.E_NOTIMPL;
-            }
-
-            int UnsafeNativeMethods.IOleInPlaceFrame.EnableModeless(bool fEnable)
-            {
-                return NativeMethods.HRESULT.E_NOTIMPL;
-            }
-
-            int UnsafeNativeMethods.IOleInPlaceFrame.TranslateAccelerator(ref NativeMethods.MSG lpmsg, short wID)
-            {
-                return NativeMethods.HRESULT.S_FALSE;
             }
 
             #endregion
 
-            #region IOleInPlaceUIWindow Members
-
-            int UnsafeNativeMethods.IOleInPlaceUIWindow.GetBorder(NativeMethods._RECT lprectBorder)
+            NativeMethods._RECT UnsafeNativeMethods.IOleInPlaceFrame/*IOleInPlaceUIWindow*/.GetBorder()
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleInPlaceUIWindow.RequestBorderSpace(NativeMethods._RECT pborderwidths)
+            void UnsafeNativeMethods.IOleInPlaceFrame/*IOleInPlaceUIWindow*/.RequestBorderSpace(NativeMethods._RECT pborderwidths)
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleInPlaceUIWindow.SetBorderSpace(NativeMethods._RECT pborderwidths)
+            void UnsafeNativeMethods.IOleInPlaceFrame/*IOleInPlaceUIWindow*/.SetBorderSpace(NativeMethods._RECT pborderwidths)
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleInPlaceUIWindow.SetActiveObject(UnsafeNativeMethods.IOleInPlaceActiveObject pActiveObject, string pszObjName)
+            void UnsafeNativeMethods.IOleInPlaceFrame/*IOleInPlaceUIWindow*/.SetActiveObject(UnsafeNativeMethods.IOleInPlaceActiveObject pActiveObject, string pszObjName)
             {
                 if (pActiveObject == null)
                 {
@@ -126,7 +100,7 @@ namespace Pajocomo.Windows.Forms
                         this.controlInEditMode.SetEditMode(ActiveXHelper.ActiveXEditMode.None);
                         this.controlInEditMode = null;
                     }
-                    return NativeMethods.HRESULT.S_OK;
+                    return;
                 }
 
                 ActiveXBase<TActiveXClass, TActiveXInterface> activeXBase = null;
@@ -165,22 +139,39 @@ namespace Pajocomo.Windows.Forms
                         activeXBase.SetSelectionStyle(ActiveXHelper.SelectionStyle.Active);
                     }
                 }
-
-                return NativeMethods.HRESULT.S_OK;
             }
 
             #endregion
 
-            #region IOleWindow Members
-
-            IntPtr UnsafeNativeMethods.IOleWindow.GetWindow()
+            NativeMethods.tagOleMenuGroupWidths UnsafeNativeMethods.IOleInPlaceFrame.InsertMenus(IntPtr hmenuShared)
             {
-                return this.parent.Handle;
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
+                //return new NativeMethods.tagOleMenuGroupWidths();
             }
 
-            int UnsafeNativeMethods.IOleWindow.ContextSensitiveHelp(bool fEnterMode)
+            void UnsafeNativeMethods.IOleInPlaceFrame.SetMenu(IntPtr hmenuShared, IntPtr holemenu, IntPtr hwndActiveObject)
             {
-                return NativeMethods.HRESULT.S_OK;
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
+            }
+
+            void UnsafeNativeMethods.IOleInPlaceFrame.RemoveMenus(IntPtr hmenuShared)
+            {
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
+            }
+
+            void UnsafeNativeMethods.IOleInPlaceFrame.SetStatusText(string pszStatusText)
+            {
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
+            }
+
+            void UnsafeNativeMethods.IOleInPlaceFrame.EnableModeless(bool fEnable)
+            {
+                throw new COMException("IOleInPlaceFrame", (int)NativeMethods.HRESULT.E_NOTIMPL);
+            }
+
+            NativeMethods.HRESULT UnsafeNativeMethods.IOleInPlaceFrame.TranslateAccelerator(ref NativeMethods.MSG lpmsg, short wID)
+            {
+                return NativeMethods.HRESULT.S_FALSE;
             }
 
             #endregion

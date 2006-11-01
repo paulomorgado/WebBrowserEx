@@ -21,7 +21,7 @@ namespace Pajocomo.Windows.Forms
     /// <typeparam name="TActiveXClass">The ActiveX control's class.</typeparam>
     /// <typeparam name="TActiveXInterface">The ActiveX control's interface.</typeparam>
     public abstract partial class ActiveXBase<TActiveXClass, TActiveXInterface> : System.Windows.Forms.Control
-        where TActiveXClass : TActiveXInterface
+        where TActiveXClass : class
         where TActiveXInterface : class
     {
         #region Private Instance Fields
@@ -441,18 +441,14 @@ namespace Pajocomo.Windows.Forms
                 {
                     return base.PreProcessMessage(ref message);
                 }
-                NativeMethods.MSG msg = new NativeMethods.MSG();
-                msg.message = message.Msg;
-                msg.wParam = message.WParam;
-                msg.lParam = message.LParam;
-                msg.hwnd = message.HWnd;
+                NativeMethods.MSG msg = (NativeMethods.MSG)message;
                 this.SetActiveXHostState(ActiveXHelper.SiteProcessedInputKey, false);
                 try
                 {
                     if (this.activeXOleInPlaceObject != null)
                     {
-                        int accelatorTranslation = this.activexOleInPlaceActiveObject.TranslateAccelerator(ref msg);
-                        if (accelatorTranslation == NativeMethods.HRESULT.S_OK)
+                        NativeMethods.HRESULT accelatorTranslated = this.activexOleInPlaceActiveObject.TranslateAccelerator(ref msg);
+                        if (accelatorTranslated == NativeMethods.HRESULT.S_OK)
                         {
                             return true;
                         }
@@ -460,7 +456,7 @@ namespace Pajocomo.Windows.Forms
                         message.WParam = msg.wParam;
                         message.LParam = msg.lParam;
                         message.HWnd = msg.hwnd;
-                        if (accelatorTranslation == NativeMethods.HRESULT.S_FALSE)
+                        if (accelatorTranslated == NativeMethods.HRESULT.S_FALSE)
                         {
                             return base.PreProcessMessage(ref message);
                         }
@@ -550,7 +546,7 @@ namespace Pajocomo.Windows.Forms
             if ((this.activeXState >= ActiveXHelper.ActiveXState.InPlaceActive))
             {
                 IntPtr window = this.activeXOleInPlaceObject.GetWindow();
-                if (NativeMethods.Succeeded(window))
+                if (window != IntPtr.Zero)
                 {
                     ApplicationShim.ParkHandle(new HandleRef(this.activeXOleInPlaceObject, window));
                 }
@@ -708,12 +704,14 @@ namespace Pajocomo.Windows.Forms
                                 this.AttachInterfacesInternal();
                                 continue;
                             case ActiveXHelper.ActiveXState.Loaded:
-                                int miscStatus = 0;
-                                if (NativeMethods.Succeeded(this.activeXOleObject.GetMiscStatus(NativeMethods.tagDVASPECT.DVASPECT_CONTENT, out miscStatus))
-                                    && ((miscStatus & 0x20000) != 0))
+                                try
                                 {
-                                    this.activeXOleObject.SetClientSite(this.ActiveXSite);
+                                    if ((this.activeXOleObject.GetMiscStatus(NativeMethods.tagDVASPECT.DVASPECT_CONTENT) & NativeMethods.tagOLEMISC.OLEMISC_SETCLIENTSITEFIRST) != 0)
+                                    {
+                                        this.activeXOleObject.SetClientSite(this.ActiveXSite);
+                                    }
                                 }
+                                catch { }
                                 if (!base.DesignMode)
                                 {
                                     this.StartEvents();
@@ -725,9 +723,9 @@ namespace Pajocomo.Windows.Forms
                                 {
                                     this.DoVerb(NativeMethods.OLEIVERB.OLEIVERB_INPLACEACTIVATE);
                                 }
-                                catch (Exception exception1)
+                                catch (Exception ex)
                                 {
-                                    throw new TargetInvocationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXNoWindowHandle, new object[] { base.GetType().Name }), exception1);
+                                    throw new TargetInvocationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXNoWindowHandle, new object[] { base.GetType().Name }), ex);
                                 }
                                 ControlShim.CreateControl(this, true);
                                 this.activeXState = ActiveXHelper.ActiveXState.InPlaceActive;

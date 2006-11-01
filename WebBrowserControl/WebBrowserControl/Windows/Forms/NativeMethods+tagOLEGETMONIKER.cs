@@ -12,7 +12,7 @@ namespace Pajocomo.Windows.Forms
         public enum tagOLEGETMONIKER : int
         {
             /// <summary>
-            /// If a moniker for the object or container does not exist, GetMoniker should return E_FAIL and not assign a moniker.
+            /// If a moniker for the object or container does not exist, GetMoniker should return <see cref="NativeMethods.HRESULT.E_FAIL"/> and not assign a moniker.
             /// </summary>
             OLEGETMONIKER_ONLYIFTHERE = 1,
 

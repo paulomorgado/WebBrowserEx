@@ -19,21 +19,21 @@ namespace Pajocomo.Windows.Forms
             /// <param name="celt">Number of elements requested.</param>
             /// <param name="rgelt">Array of size celt (or larger) of the elements of interest.</param>
             /// <param name="pceltFetched">Pointer to the number of elements supplied in rgelt.</param>
-            /// <returns>
-            /// This method supports the standard return values.
-            /// </returns>
-            [PreserveSig]
-            int Next([In, MarshalAs(UnmanagedType.U4)] int celt, [Out] IntPtr rgelt, IntPtr pceltFetched);
+            /// <returns><see langword="false"/> if the container processed the message; otherwise <see langword="true"/>.</returns>
+            [return: MarshalAs(UnmanagedType.Bool)]
+            bool Next(
+                [In, MarshalAs(UnmanagedType.U4)] int celt, 
+                [Out] IntPtr rgelt, 
+                [Out] IntPtr pceltFetched);
 
             /// <summary>
             /// Skips over a specified number of items in the enumeration sequence.
             /// </summary>
             /// <param name="celt">Number of elements to be skipped.</param>
-            /// <returns>
-            /// This method supports the standard return values.
-            /// </returns>
-            [PreserveSig]
-            int Skip([In, MarshalAs(UnmanagedType.U4)] int celt);
+            /// <returns><see langword="false"/> if the container processed the message; otherwise <see langword="true"/>.</returns>
+            [return: MarshalAs(UnmanagedType.Bool)]
+            bool Skip(
+                [In, MarshalAs(UnmanagedType.U4)] int celt);
 
             /// <summary>
             /// Resets the enumeration sequence to the beginning.
@@ -43,8 +43,9 @@ namespace Pajocomo.Windows.Forms
             /// <summary>
             /// Creates a copy of the current state of enumeration.
             /// </summary>
-            /// <param name="ppenum">Address of <see cref="IEnumUnknown"/> pointer variable that receives the interface pointer to the enumeration object.</param>
-            void Clone(out UnsafeNativeMethods.IEnumUnknown ppenum);
+            /// <return>The <see cref="IEnumUnknown">enumeration object</see>.</return>
+            [return: MarshalAs(UnmanagedType.Interface)]
+            UnsafeNativeMethods.IEnumUnknown Clone();
         }
     }
 }

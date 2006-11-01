@@ -32,7 +32,7 @@ namespace Pajocomo.Windows.Forms
 
             #region IEnumUnknown Members
 
-            int UnsafeNativeMethods.IEnumUnknown.Next(int celt, IntPtr rgelt, IntPtr pceltFetched)
+            bool UnsafeNativeMethods.IEnumUnknown.Next(int celt, IntPtr rgelt, IntPtr pceltFetched)
             {
                 if (pceltFetched != IntPtr.Zero)
                 {
@@ -41,7 +41,7 @@ namespace Pajocomo.Windows.Forms
 
                 if (celt < 0)
                 {
-                    return NativeMethods.HRESULT.E_INVALIDARG;
+                    throw new COMException("IEnumUnknown", (int)NativeMethods.HRESULT.E_INVALIDARG);
                 }
 
                 int el = 0;
@@ -67,14 +67,14 @@ namespace Pajocomo.Windows.Forms
                     Marshal.WriteInt32(pceltFetched, 0, el);
                 }
 
-                return (el != celt) ? NativeMethods.HRESULT.S_FALSE : NativeMethods.HRESULT.S_OK;
+                return (el != celt);
             }
 
-            int UnsafeNativeMethods.IEnumUnknown.Skip(int celt)
+            bool UnsafeNativeMethods.IEnumUnknown.Skip(int celt)
             {
                 this.loc += celt;
 
-                return (this.loc >= this.size) ? NativeMethods.HRESULT.S_FALSE : NativeMethods.HRESULT.S_OK;
+                return (this.loc >= this.size);
             }
 
             void UnsafeNativeMethods.IEnumUnknown.Reset()
@@ -82,9 +82,9 @@ namespace Pajocomo.Windows.Forms
                 this.loc = 0;
             }
 
-            void UnsafeNativeMethods.IEnumUnknown.Clone(out UnsafeNativeMethods.IEnumUnknown ppenum)
+            UnsafeNativeMethods.IEnumUnknown UnsafeNativeMethods.IEnumUnknown.Clone()
             {
-                ppenum = new ActiveXHelper.EnumUnknown(this.arr, this.loc);
+                return new ActiveXHelper.EnumUnknown(this.arr, this.loc);
             }
 
             #endregion

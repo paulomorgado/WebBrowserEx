@@ -29,6 +29,17 @@ namespace Pajocomo.Windows.Forms
             public tagSIZEL()
             {
             }
+
+            /// <summary>
+            /// Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:tagSIZEL"></see>.
+            /// </summary>
+            /// <returns>
+            /// A <see cref="T:System.String"></see> that represents the current <see cref="T:tagSIZEL"></see>.
+            /// </returns>
+            public override string ToString()
+            {
+                return "cx = " + this.cx + " cy " + this.cy;
+            }
         }
     }
 }

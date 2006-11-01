@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Pajocomo.Windows.Forms
 {
@@ -42,6 +43,40 @@ namespace Pajocomo.Windows.Forms
             /// Specifies the cursor position, in screen coordinates, when the message was posted
             /// </summary>
             public _POINTL pt;
+
+            /// <summary>
+            /// Explicitly converts a <see cref="T:MSG"/> instance into a <see cref="T:Message"/> instance.
+            /// </summary>
+            /// <param name="msg">The <see cref="T:MSG"/>.</param>
+            /// <returns>The <see cref="T:Message"/>.</returns>
+            public static explicit operator Message(MSG msg)
+            {
+                Message message = new Message();
+
+                message.Msg = msg.message;
+                message.WParam = msg.wParam;
+                message.LParam = msg.lParam;
+                message.HWnd = msg.hwnd;
+
+                return message;
+            }
+
+            /// <summary>
+            /// Explicitly converts a <see cref="T:Message"/> instance into a <see cref="T:MSG"/> instance.
+            /// </summary>
+            /// <param name="msg">The <see cref="T:Message"/>.</param>
+            /// <returns>The <see cref="T:MSG"/>.</returns>
+            public static explicit operator MSG(Message message)
+            {
+                MSG msg = new MSG();
+
+                msg.message = message.Msg;
+                msg.wParam = message.WParam;
+                msg.lParam = message.LParam;
+                msg.hwnd = message.HWnd;
+
+                return msg;
+            }
         }
     }
 }

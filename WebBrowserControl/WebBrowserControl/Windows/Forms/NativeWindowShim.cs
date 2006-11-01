@@ -15,7 +15,7 @@ namespace Pajocomo.Windows.Forms
             Type nativeWindowType = typeof(NativeWindow);
 
             NativeWindowShim.assignHandleMethodInfo = nativeWindowType.GetMethod("AssignHandle",
-                BindingFlags.Static | BindingFlags.NonPublic, null, new Type[] { typeof(IntPtr), typeof(bool) }, null);
+                BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[] { typeof(IntPtr), typeof(bool) }, null);
         }
 
         internal static void AssignHandle(NativeWindow nativeWindow, IntPtr handle, bool assignUniqueID)

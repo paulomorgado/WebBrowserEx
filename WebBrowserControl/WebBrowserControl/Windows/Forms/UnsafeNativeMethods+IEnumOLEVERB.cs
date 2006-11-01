@@ -19,17 +19,17 @@ namespace Pajocomo.Windows.Forms
             /// <param name="celt">Number of elements requested.</param>
             /// <param name="rgelt">Array of size celt (or larger) of the elements of interest.</param>
             /// <param name="pceltFetched">Pointer to the number of elements supplied in rgelt.</param>
-            /// <returns>This method supports the standard return values.</returns>
-            [PreserveSig]
-            int Next([MarshalAs(UnmanagedType.U4)] int celt, [Out] NativeMethods.tagOLEVERB rgelt, [Out, MarshalAs(UnmanagedType.LPArray)] int[] pceltFetched);
+            void Next(
+                [In, MarshalAs(UnmanagedType.U4)] int celt, 
+                [Out, MarshalAs(UnmanagedType.Interface)] NativeMethods.tagOLEVERB rgelt, 
+                [Out, MarshalAs(UnmanagedType.LPArray)] int[] pceltFetched);
 
             /// <summary>
             /// Skips over a specified number of items in the enumeration sequence.
             /// </summary>
             /// <param name="celt">Number of elements to be skipped.</param>
-            /// <returns>This method supports the standard return values.</returns>
-            [PreserveSig]
-            int Skip([In, MarshalAs(UnmanagedType.U4)] int celt);
+            void Skip(
+                [In, MarshalAs(UnmanagedType.U4)] int celt);
 
             /// <summary>
             /// Resets the enumeration sequence to the beginning.
@@ -39,8 +39,9 @@ namespace Pajocomo.Windows.Forms
             /// <summary>
             /// Creates a copy of the current state of enumeration.
             /// </summary>
-            /// <param name="ppenum">Address of <see cref="IEnumOLEVERB"/> pointer variable that receives the interface pointer to the enumeration object.</param>
-            void Clone(out UnsafeNativeMethods.IEnumOLEVERB ppenum);
+            /// <return>The <see cref="IEnumOLEVERB">enumeration object</see>.</return>
+            [return: MarshalAs(UnmanagedType.Interface)]
+            UnsafeNativeMethods.IEnumOLEVERB Clone();
         }
     }
 }

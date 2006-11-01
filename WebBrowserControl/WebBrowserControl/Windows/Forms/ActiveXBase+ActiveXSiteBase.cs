@@ -137,39 +137,36 @@ namespace Pajocomo.Windows.Forms
 
             #region IOleClientSite Members
 
-            int UnsafeNativeMethods.IOleClientSite.GetContainer(out UnsafeNativeMethods.IOleContainer container)
+            UnsafeNativeMethods.IOleContainer UnsafeNativeMethods.IOleClientSite.GetContainer()
             {
-                container = this.Host.GetParentContainer();
-                return NativeMethods.HRESULT.S_OK;
+                return this.Host.GetParentContainer();
             }
 
-            int UnsafeNativeMethods.IOleClientSite.GetMoniker(NativeMethods.tagOLEGETMONIKER dwAssign, NativeMethods.tagOLEWHICHMK dwWhichMoniker, out object moniker)
+            object UnsafeNativeMethods.IOleClientSite.GetMoniker(NativeMethods.tagOLEGETMONIKER dwAssign, NativeMethods.tagOLEWHICHMK dwWhichMoniker)
             {
-                moniker = null;
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleClientSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleClientSite.OnShowWindow(bool fShow)
+            void UnsafeNativeMethods.IOleClientSite.OnShowWindow(bool fShow)
             {
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleClientSite.RequestNewObjectLayout()
+            void UnsafeNativeMethods.IOleClientSite.RequestNewObjectLayout()
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleClientSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleClientSite.SaveObject()
+            void UnsafeNativeMethods.IOleClientSite.SaveObject()
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleClientSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleClientSite.ShowObject()
+            void UnsafeNativeMethods.IOleClientSite.ShowObject()
             {
                 if (this.Host.activeXState >= ActiveXHelper.ActiveXState.InPlaceActive)
                 {
                     IntPtr window = this.Host.activeXOleInPlaceObject.GetWindow();
-                    if (NativeMethods.Succeeded(window))
+                    if (window != IntPtr.Zero)
                     {
                         if ((this.Host.GetHandleNoCreate() != window) && (window != IntPtr.Zero))
                         {
@@ -182,30 +179,36 @@ namespace Pajocomo.Windows.Forms
                         throw new InvalidOperationException(ResourcesHelper.GetString(ResourcesHelper.ActiveXWindowlessControl));
                     }
                 }
-                return NativeMethods.HRESULT.S_OK;
             }
 
             #endregion
 
             #region IOleControlSite Members
 
-            int UnsafeNativeMethods.IOleControlSite.OnControlInfoChanged()
+            object UnsafeNativeMethods.IOleControlSite.GetExtendedControl()
             {
-                return NativeMethods.HRESULT.S_OK;
+                throw new COMException("IOleControlSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleControlSite.LockInPlaceActive(int fLock)
+            void UnsafeNativeMethods.IOleControlSite.LockInPlaceActive(bool fLock)
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleControlSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
-            int UnsafeNativeMethods.IOleControlSite.GetExtendedControl(out object ppDisp)
+            void UnsafeNativeMethods.IOleControlSite.OnControlInfoChanged()
             {
-                ppDisp = null;
-                return NativeMethods.HRESULT.E_NOTIMPL;
             }
 
-            int UnsafeNativeMethods.IOleControlSite.TransformCoords(NativeMethods._POINTL pPtlHimetric, NativeMethods.tagPOINTF pPtfContainer, NativeMethods.tagXFORMCOORDS dwFlags)
+            void UnsafeNativeMethods.IOleControlSite.OnFocus(bool fGotFocus)
+            {
+            }
+
+            void UnsafeNativeMethods.IOleControlSite.ShowPropertyFrame()
+            {
+                throw new COMException("IOleControlSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
+            }
+
+            void UnsafeNativeMethods.IOleControlSite.TransformCoords(NativeMethods._POINTL pPtlHimetric, NativeMethods.tagPOINTF pPtfContainer, NativeMethods.tagXFORMCOORDS dwFlags)
             {
                 if ((dwFlags & NativeMethods.tagXFORMCOORDS.XFORMCOORDS_HIMETRICTOCONTAINER) != 0)
                 {
@@ -213,15 +216,15 @@ namespace Pajocomo.Windows.Forms
                     {
                         pPtfContainer.x = ActiveXHelper.HM2Pix(pPtlHimetric.x, ActiveXHelper.LogPixelsX);
                         pPtfContainer.y = ActiveXHelper.HM2Pix(pPtlHimetric.y, ActiveXHelper.LogPixelsY);
-                        return NativeMethods.HRESULT.S_OK;
+                        return;
                     }
                     if ((dwFlags & NativeMethods.tagXFORMCOORDS.XFORMCOORDS_POSITION) != 0)
                     {
                         pPtfContainer.x = ActiveXHelper.HM2Pix(pPtlHimetric.x, ActiveXHelper.LogPixelsX);
                         pPtfContainer.y = ActiveXHelper.HM2Pix(pPtlHimetric.y, ActiveXHelper.LogPixelsY);
-                        return NativeMethods.HRESULT.S_OK;
+                        return;
                     }
-                    return NativeMethods.HRESULT.E_INVALIDARG;
+                    throw new COMException("IOleControlSite", (int)NativeMethods.HRESULT.E_INVALIDARG);
                 }
                 if ((dwFlags & NativeMethods.tagXFORMCOORDS.XFORMCOORDS_CONTAINERTOHIMETRIC) != 0)
                 {
@@ -229,72 +232,63 @@ namespace Pajocomo.Windows.Forms
                     {
                         pPtlHimetric.x = ActiveXHelper.Pix2HM((int)pPtfContainer.x, ActiveXHelper.LogPixelsX);
                         pPtlHimetric.y = ActiveXHelper.Pix2HM((int)pPtfContainer.y, ActiveXHelper.LogPixelsY);
-                        return NativeMethods.HRESULT.S_OK;
+                        return;
                     }
                     if ((dwFlags & NativeMethods.tagXFORMCOORDS.XFORMCOORDS_POSITION) != 0)
                     {
                         pPtlHimetric.x = ActiveXHelper.Pix2HM((int)pPtfContainer.x, ActiveXHelper.LogPixelsX);
                         pPtlHimetric.y = ActiveXHelper.Pix2HM((int)pPtfContainer.y, ActiveXHelper.LogPixelsY);
-                        return NativeMethods.HRESULT.S_OK;
+                        return;
                     }
                 }
-                return NativeMethods.HRESULT.E_INVALIDARG;
+                throw new COMException("IOleControlSite", (int)NativeMethods.HRESULT.E_INVALIDARG);
             }
 
-            int UnsafeNativeMethods.IOleControlSite.TranslateAccelerator(ref NativeMethods.MSG pMsg, NativeMethods.tagKEYMODIFIERS grfModifiers)
+            /// <summary>
+            /// Instructs the container to process a specified keystroke.
+            /// </summary>
+            /// <param name="pMsg">Pointer to the <see cref="NativeMethods.MSG"/> structure describing the keystroke to be processed.</param>
+            /// <param name="grfModifiers">Flags describing the state of the Control, Alt, and Shift keys. The value of the flag can be any valid <see cref="NativeMethods.tagKEYMODIFIERS"/> enumeration values.</param>
+            /// <returns>
+            /// 	<see langword="false"/> if the container processed the message; otherwise <see langword="true"/>.
+            /// </returns>
+            NativeMethods.HRESULT UnsafeNativeMethods.IOleControlSite.TranslateAccelerator(ref NativeMethods.MSG pMsg, NativeMethods.tagKEYMODIFIERS grfModifiers)
             {
-                int num1;
-                this.Host.SetActiveXHostState(ActiveXHelper.SiteProcessedInputKey, true);
-                Message message1 = new Message();
-                message1.Msg = pMsg.message;
-                message1.WParam = pMsg.wParam;
-                message1.LParam = pMsg.lParam;
-                message1.HWnd = pMsg.hwnd;
                 try
                 {
-                    num1 = (this.Host.PreProcessControlMessage(ref message1) == PreProcessControlState.MessageProcessed) ? 0 : 1;
+                    this.Host.SetActiveXHostState(ActiveXHelper.SiteProcessedInputKey, true);
+
+                    Message message = (Message)pMsg;
+
+                    return (this.Host.PreProcessControlMessage(ref message) == PreProcessControlState.MessageProcessed) ? NativeMethods.HRESULT.S_OK : NativeMethods.HRESULT.S_FALSE;
                 }
                 finally
                 {
                     this.Host.SetActiveXHostState(ActiveXHelper.SiteProcessedInputKey, false);
                 }
-                return num1;
-            }
-
-            int UnsafeNativeMethods.IOleControlSite.OnFocus(bool fGotFocus)
-            {
-                return NativeMethods.HRESULT.S_OK;
-            }
-
-            int UnsafeNativeMethods.IOleControlSite.ShowPropertyFrame()
-            {
-                return NativeMethods.HRESULT.E_NOTIMPL;
             }
 
             #endregion
 
             #region IOleInPlaceSite Members
 
-            int UnsafeNativeMethods.IOleInPlaceSite.CanInPlaceActivate()
+            void UnsafeNativeMethods.IOleInPlaceSite.CanInPlaceActivate()
             {
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.OnInPlaceActivate()
+            void UnsafeNativeMethods.IOleInPlaceSite.OnInPlaceActivate()
             {
                 this.Host.activeXState = ActiveXHelper.ActiveXState.InPlaceActive;
                 this.OnActiveXRectChange(new NativeMethods._RECT(this.Host.Bounds));
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.OnUIActivate()
+            void UnsafeNativeMethods.IOleInPlaceSite.OnUIActivate()
             {
                 this.Host.activeXState = ActiveXHelper.ActiveXState.UIActive;
                 this.Host.GetParentContainer().OnUIActivate(this.Host);
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.GetWindowContext(out UnsafeNativeMethods.IOleInPlaceFrame ppFrame, out UnsafeNativeMethods.IOleInPlaceUIWindow ppDoc, NativeMethods._RECT lprcPosRect, NativeMethods._RECT lprcClipRect, NativeMethods.tagOIFI lpFrameInfo)
+            void UnsafeNativeMethods.IOleInPlaceSite.GetWindowContext(out UnsafeNativeMethods.IOleInPlaceFrame ppFrame, out UnsafeNativeMethods.IOleInPlaceUIWindow ppDoc, NativeMethods._RECT lprcPosRect, NativeMethods._RECT lprcClipRect, NativeMethods.tagOIFI lpFrameInfo)
             {
                 ppDoc = null;
                 ppFrame = this.Host.GetParentContainer();
@@ -311,55 +305,51 @@ namespace Pajocomo.Windows.Forms
                     lpFrameInfo.cAccelEntries = 0;
                     lpFrameInfo.hwndFrame = (this.Host.Parent == null) ? IntPtr.Zero : this.Host.Parent.Handle;
                 }
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.Scroll(NativeMethods.tagSIZE scrollExtant)
+            bool UnsafeNativeMethods.IOleInPlaceSite.Scroll(NativeMethods.tagSIZE scrollExtant)
             {
-                return NativeMethods.HRESULT.S_FALSE;
+                return true;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.OnUIDeactivate(int fUndoable)
+            void UnsafeNativeMethods.IOleInPlaceSite.OnUIDeactivate(bool fUndoable)
             {
                 this.Host.GetParentContainer().OnUIDeactivate(this.Host);
                 if (this.Host.activeXState > ActiveXHelper.ActiveXState.InPlaceActive)
                 {
                     this.Host.activeXState = ActiveXHelper.ActiveXState.InPlaceActive;
                 }
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.OnInPlaceDeactivate()
+            void UnsafeNativeMethods.IOleInPlaceSite.OnInPlaceDeactivate()
             {
                 if (this.Host.activeXState == ActiveXHelper.ActiveXState.UIActive)
                 {
-                    ((UnsafeNativeMethods.IOleInPlaceSite)this).OnUIDeactivate(0);
+                    ((UnsafeNativeMethods.IOleInPlaceSite)this).OnUIDeactivate(false);
                 }
                 this.Host.GetParentContainer().OnInPlaceDeactivate(this.Host);
                 this.Host.activeXState = ActiveXHelper.ActiveXState.Running;
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.DiscardUndoState()
+            void UnsafeNativeMethods.IOleInPlaceSite.DiscardUndoState()
             {
-                return NativeMethods.HRESULT.S_OK;
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.DeactivateAndUndo()
+            void UnsafeNativeMethods.IOleInPlaceSite.DeactivateAndUndo()
             {
-                return this.Host.activeXOleInPlaceObject.UIDeactivate();
+                this.Host.activeXOleInPlaceObject.UIDeactivate();
             }
 
-            int UnsafeNativeMethods.IOleInPlaceSite.OnPosRectChange(NativeMethods._RECT lprcPosRect)
+            void UnsafeNativeMethods.IOleInPlaceSite.OnPosRectChange(NativeMethods._RECT lprcPosRect)
             {
-                return this.OnActiveXRectChange(lprcPosRect);
+                this.OnActiveXRectChange(lprcPosRect);
             }
 
             #endregion
 
             #region IOleWindow Members
 
-            IntPtr UnsafeNativeMethods.IOleWindow.GetWindow()
+            IntPtr UnsafeNativeMethods.IOleInPlaceSite/*.IOleWindow*/.GetWindow()
             {
                 IntPtr parentWindowPtr;
                 try
@@ -373,9 +363,9 @@ namespace Pajocomo.Windows.Forms
                 return parentWindowPtr;
             }
 
-            int UnsafeNativeMethods.IOleWindow.ContextSensitiveHelp(bool fEnterMode)
+            void UnsafeNativeMethods.IOleInPlaceSite/*.IOleWindow*/.ContextSensitiveHelp(bool fEnterMode)
             {
-                return NativeMethods.HRESULT.E_NOTIMPL;
+                throw new COMException("IOleInPlaceSite", (int)NativeMethods.HRESULT.E_NOTIMPL);
             }
 
             #endregion
@@ -402,23 +392,22 @@ namespace Pajocomo.Windows.Forms
                 }
             }
 
-            int UnsafeNativeMethods.IPropertyNotifySink.OnRequestEdit(int dispID)
+            void UnsafeNativeMethods.IPropertyNotifySink.OnRequestEdit(int dispID)
             {
-                return NativeMethods.HRESULT.S_OK;
             }
 
             #endregion
 
             #region ISimpleFrameSite Members
 
-            int UnsafeNativeMethods.ISimpleFrameSite.PreMessageFilter(IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref IntPtr plResult, ref int pdwCookie)
+            bool UnsafeNativeMethods.ISimpleFrameSite.PreMessageFilter(IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref IntPtr plResult, ref int pdwCookie)
             {
-                return NativeMethods.HRESULT.S_OK;
+                return false;
             }
 
-            int UnsafeNativeMethods.ISimpleFrameSite.PostMessageFilter(IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref IntPtr plResult, int dwCookie)
+            bool UnsafeNativeMethods.ISimpleFrameSite.PostMessageFilter(IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref IntPtr plResult, int dwCookie)
             {
-                return NativeMethods.HRESULT.S_FALSE;
+                return true;
             }
 
             #endregion

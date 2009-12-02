@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    .. ado.net/XML headers & schema ..
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ..</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ..</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionCategory" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="AppearanceCategory" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="BehaviorCategory" xml:space="preserve">
+    <value>Behavior</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_Default" xml:space="preserve">
+    <value>Default behavior.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_DisableUTF8Encoding" xml:space="preserve">
+    <value>Will disable UTF-8 encoding.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_DownloadImages" xml:space="preserve">
+    <value>Will download images from the server.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_EnableUTF8Encoding" xml:space="preserve">
+    <value>Will enable UTF-8 encoding.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_ForceOffline" xml:space="preserve">
+    <value>Will always operate in offline mode.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoActiveXDownload" xml:space="preserve">
+    <value>Will not download any ActiveX Controls in the document.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoActiveXRun" xml:space="preserve">
+    <value>Will not execute any ActiveX Controls in the document.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoBehaviours" xml:space="preserve">
+    <value>Will not execute any behaviors.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoClientPull" xml:space="preserve">
+    <value>Will not perform any client pull operations.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoFrameDownload" xml:space="preserve">
+    <value>Will not download frames and ignore the frameset.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoMetaCharSets" xml:space="preserve">
+    <value>Will suppress HTML Character Sets reflected by meta elements.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_NoScripts" xml:space="preserve">
+    <value>Will not execute any Java applets.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_OfflineIfNotConnected" xml:space="preserve">
+    <value>Will operate in offline mode if not connected to the Internet.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_PlayBackgroundSounds" xml:space="preserve">
+    <value>Will play background sounds associated with the document.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_PlayVideos" xml:space="preserve">
+    <value>Will download and display video media.</value>
+  </data>
+  <data name="WebBrowserDownloadControlOptions_ValueDescription_Resynchronize" xml:space="preserve">
+    <value>Will force the request through to the server and ignore the proxy.</value>
+  </data>
+  <data name="PropertyChangedCategory" xml:space="preserve">
+    <value>Property Changed</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_ActivateOnClientHitOnly" xml:space="preserve">
+    <value>Will only become UI active if the mouse is clicked in the client area.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_BrowseOpenNewWindow" xml:space="preserve">
+    <value>Will browse clicked links in new window.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_CodepageLinkedFonts" xml:space="preserve">
+    <value>Compatibility for Microsoft Outlook Express.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_Dialog" xml:space="preserve">
+    <value>Will not enable selection of the text in the form.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DisableEditNSFixup" xml:space="preserve">
+    <value>Will disable automatic correction of namespaces when editing HTML.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DisableHelpMenu" xml:space="preserve">
+    <value>Will not add the Help menu item to the container's menu.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DisableOffscreen" xml:space="preserve">
+    <value>Not implemented.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DisableScriptInactive" xml:space="preserve">
+    <value>Will not execute any script when loading pages.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DisableUntrustedProtocol" xml:space="preserve">
+    <value>Will turn off untrusted protocols.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DisableUTF8Encoding" xml:space="preserve">
+    <value>Will not submit the URL is to the server in UTF-8 encoding.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_DivBlockDefault" xml:space="preserve">
+    <value>Will insert the div tag if a return is entered in edit mode.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_EnableActiveXInactivateMode" xml:space="preserve">
+    <value>Requires user activation for Microsoft ActiveX controls and Java Applets embedded within a web page.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_EnableFormsAutoComplete" xml:space="preserve">
+    <value>Will enable the AutoComplete feature for forms.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_EnableInPlaceNavigation" xml:space="preserve">
+    <value>Navigation will happen in place.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_EnableRedirectNotification" xml:space="preserve">
+    <value>Causes MSHTML to fire an additional Navigating event when redirect navigations occur.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_EnableUTF8Encoding" xml:space="preserve">
+    <value>Will submit the URL is to the server in UTF-8 encoding.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_FlatScrollbars" xml:space="preserve">
+    <value>Will use flat scroll bars.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_HostNavigates" xml:space="preserve">
+    <value>Indicates that navigation is delegated to the host; otherwise, MSHTML will perform navigation.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_ImeEnableReconversion" xml:space="preserve">
+    <value>Will enable Input Method Editor (IME) reconversion.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_LocalMachineAccessCheck" xml:space="preserve">
+    <value>Will prevent Web sites in the Internet zone from accessing files in the Local Machine zone.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_No3DBorder" xml:space="preserve">
+    <value>Will not use 3-D borders on any frames or framesets.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_No3DOuterBorder" xml:space="preserve">
+    <value>Will not display any 3-D border on the outermost frame or frameset.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_NoPics" xml:space="preserve">
+    <value>Will disbale PICS ratings.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_NoScrollBars" xml:space="preserve">
+    <value>Will not have scroll bars.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_NoTheme" xml:space="preserve">
+    <value>Will not use themes for pages.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_OverrideBehaviorFactory" xml:space="preserve">
+    <value>Will consult the host before retrieving.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_Theme" xml:space="preserve">
+    <value>Will use themes for pages.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_UseWindowedSelectControl" xml:space="preserve">
+    <value>Causes MSHTML to create standard Microsoft Win32 "windowed" select and drop-down controls.</value>
+  </data>
+  <data name="WebBrowserCapabilities_ValueDescription_UseWindowlessSelectControl" xml:space="preserve">
+    <value>Causes MSHTML to use the Document Object Model (DOM) to create native "windowless" select controls that can be visually layered under other elements.</value>
+  </data>
+  <data name="WebBrowserClientToHostWindowDescription" xml:space="preserve">
+    <value>Occurs when the client window size is to be converted to host window size.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_WindowClosing" xml:space="preserve">
+    <value>Occurs when the window of the object is about to be closed by script.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_DocumentCompleted" xml:space="preserve">
+    <value>Occurs when a document has been completely loaded and initialized.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_Downloaded" xml:space="preserve">
+    <value>Occurs when a navigation operation finishes, is halted, or fails.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_Downloading" xml:space="preserve">
+    <value>Occurs when a navigation operation is beginning.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_DownloadingFile" xml:space="preserve">
+    <value>Occurs when a file download is about to occur.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_Navigated" xml:space="preserve">
+    <value>Occurs after a navigation to a link is completed on either a window or frame.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_NavigateError" xml:space="preserve">
+    <value>Occours when an error occurs during navigation.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_Navigating" xml:space="preserve">
+    <value>Occurs before navigation occurs in the given object (on either a window or frameset element).</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_NewWindow" xml:space="preserve">
+    <value>Occurs when a new window is to be created.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_No3DBorder" xml:space="preserve">
+    <value>Specifies whether 3D borders shouldn't be used on the outermost frame or frameset only.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_No3DOuterBorder" xml:space="preserve">
+    <value>Specifies whether 3D borders shouldn't be used on any frames or framesets.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_PrintTemplateCreated" xml:space="preserve">
+    <value>Occurs when a print template has been created.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_PrintTemplateDestroyed" xml:space="preserve">
+    <value>Occurs when a print template has been destroyed.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_PropertyChanged" xml:space="preserve">
+    <value>Occurs when the one of WebBrowserControl's property values changes.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_RegisterAsBrowser" xml:space="preserve">
+    <value>Indicates whether the WebBrowserControl is registered as a top-level browser for target name resolution.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_ScriptError" xml:space="preserve">
+    <value>Occurs when the policy for the specified action is being determined.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_ShowAddressBar" xml:space="preserve">
+    <value>Specifies whether the address bar of the object is visible or hidden.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_ShowHelp" xml:space="preserve">
+    <value>Occurs when MSHTML when needs to display Help.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_ShowMessage" xml:space="preserve">
+    <value>Occurs when MSHTML when needs to display a message box.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_StatusTextChanged" xml:space="preserve">
+    <value>Occurs when the status bar text changes.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_UserAgent" xml:space="preserve">
+    <value>Specifies the user agent for the current WebBrowserControl instance.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_WindowLeftChanged" xml:space="preserve">
+    <value>Occurs when  the client window left position changes.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_WindowHeightChanged" xml:space="preserve">
+    <value>Occurs when the client window changes its height.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_ShowMenuBar" xml:space="preserve">
+    <value>Gets or sets whether the menu bar is visible.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_ShowMenuBarChanged" xml:space="preserve">
+    <value>Occurs when the ShowMenuBar property is changed.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_ShowToolBarChanged" xml:space="preserve">
+    <value>Occurs when the ShowToolBar property is changed.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_WindowTopChanged" xml:space="preserve">
+    <value>Occurs when  the client window top position changes.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_WindowWidthChanged" xml:space="preserve">
+    <value>Occurs when the client window changes its width.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_FullScreenModeChanged" xml:space="preserve">
+    <value>Occurs when the value of the FullScreenMode property changes.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_TheaterModeChanged" xml:space="preserve">
+    <value>Occurs when the value of the TheaterMode property changes.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_FullScreenMode" xml:space="preserve">
+    <value>Gets or Sets a value that indicates whether the object is in full-screen mode or normal window mode.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_ShowStatusBar" xml:space="preserve">
+    <value>Gets or sets whether the status bar is visible.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_ShowToolBar" xml:space="preserve">
+    <value>Gets or sets whether menu bars are visible.</value>
+  </data>
+  <data name="WebBrowserEx_PropertyDescription_TheaterMode" xml:space="preserve">
+    <value>Gets or Sets a value that indicates whether the control is in theater mode.</value>
+  </data>
+</root>

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C29AB69-BDB0-4F5E-A758-99FDD5B0F283}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PauloMorgado</RootNamespace>
+    <AssemblyName>PauloMorgado.Windows.WebBrowserEx</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComponentModel\EventHandlerListExtensions.cs" />
+    <Compile Include="ComponentModel\ReadOnlyValueEventArgs.cs" />
+    <Compile Include="ComponentModel\ValueEventArgs.cs" />
+    <Compile Include="ComponentModel\BehaviorCategoryAttribute.cs" />
+    <Compile Include="ComponentModel\ActionCategoryAttribute.cs" />
+    <Compile Include="ComponentModel\AppearanceCategoryAttribute.cs" />
+    <Compile Include="ComponentModel\PropertyChangedCategoryAttribute.cs" />
+    <Compile Include="ComponentModel\ResourcesCategoryAttribute.cs" />
+    <Compile Include="ComponentModel\ResourcesDescriptionAttribute.cs" />
+    <Compile Include="Windows\Forms\WebBrowserEx-Constants.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx+WebBrowserExEventsShim.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IEnumUnknown.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowser-Properties.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserDoubleClickActions.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserDownloadControlOptions.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNewWindowEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNewWindowFlags.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserPrintTemplateEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNavigateErrorStatus.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNavigateErrorEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserDownloadingFileEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserEncryptionLevelChangedEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserClosingEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserDocumentCompletedEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNavigatedEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNavigatingEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserNavigateFlags.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowser+WebBrowserPropertyAccessor.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowser.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserCommandStates.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserEvents+DWebBrowserEvents2.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserHelpTypes.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserScriptErrorEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Windows\WebBrowser\WebBrowserShowHelpEventArgs.cs" />
+    <Compile Include="Windows\Forms\WebBrowserEx-Events.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx-Fields.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx+WebBrowserExSite+IDocHostShowUI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx+WebBrowserExSite+IServiceProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx+WebBrowserExSite+IOleCommandTarget.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx+WebBrowserExUIHandlerShim.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx-Properties.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WebBrowser\WebBrowserShowMessageEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserCapabilities.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserEvents+WebBrowserEventsShim.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserEvents.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserTranslateUrlEventArgs.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserUIHandler+IDocHostUIHandler.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserUIHandler.cs" />
+    <Compile Include="Windows\Forms\WebBrowserEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\WebBrowserEx+WebBrowserExSite.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+ICustomDoc.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+CONTROLINFO.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+DOCHOSTUIINFO.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+IOleCommandTarget.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+LOGPALETTE.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+MSG.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+OLECMD.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+OLECMDERR.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+OLECMDTEXT.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+OLECMDTEXTF.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+OleMenuGroupWidths.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+OLEVERB.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+POINT.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+RECT.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+SIZEL.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+Util.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+WINDOWPOS.cs" />
+    <Compile Include="Windows\Interop\NativeMethods+WindowsMessages.cs" />
+    <Compile Include="Windows\Interop\NativeMethods.cs" />
+    <Compile Include="Windows\Interop\SafeNativeMethods+Kernel32.cs" />
+    <Compile Include="Windows\Interop\SafeNativeMethods+Ole32.cs" />
+    <Compile Include="Windows\Interop\SafeNativeMethods+Urlmon.cs" />
+    <Compile Include="Windows\Interop\SafeNativeMethods.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+DWebBrowserEvents2.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+HRESULT.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IDocHostShowUI.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IDocHostUIHandler.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IEnumOLEVERB.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IHTMLOMWindowServices.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IInternetSecurityManager.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IInternetSecurityMgrSite.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleClientSite.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleContainer.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleControl.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleDropTarget.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleInPlaceActiveObject.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleInPlaceFrame.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleInPlaceObject.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleInPlaceUIWindow.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleObject.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IOleServiceProvider.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IProfferService.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IPropertyNotifySink.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods+IWebBrowser2.cs" />
+    <Compile Include="Windows\Interop\UnsafeNativeMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserCommandOptions.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserCommands.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserCommandStatus.cs" />
+    <Compile Include="Windows\WebBrowser\WebBrowserUIHandler+WebBrowserUIHandlerShim.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Windows\Designer\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBrowserEx", "WebBrowserEx\WebBrowserEx.csproj", "{4C29AB69-BDB0-4F5E-A758-99FDD5B0F283}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsWebBrowserTester", "WinFormsWebBrowserTester\WinFormsWebBrowserTester.csproj", "{D909FCE0-8F7E-4EA3-9335-D72FBA0D06FE}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WebBrowserEx\\WebBrowserEx.csproj
+		SccProjectName1 = WebBrowserEx
+		SccLocalPath1 = WebBrowserEx
+		SccProjectUniqueName2 = WinFormsWebBrowserTester\\WinFormsWebBrowserTester.csproj
+		SccProjectName2 = WinFormsWebBrowserTester
+		SccLocalPath2 = WinFormsWebBrowserTester
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C29AB69-BDB0-4F5E-A758-99FDD5B0F283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C29AB69-BDB0-4F5E-A758-99FDD5B0F283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C29AB69-BDB0-4F5E-A758-99FDD5B0F283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C29AB69-BDB0-4F5E-A758-99FDD5B0F283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D909FCE0-8F7E-4EA3-9335-D72FBA0D06FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D909FCE0-8F7E-4EA3-9335-D72FBA0D06FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D909FCE0-8F7E-4EA3-9335-D72FBA0D06FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D909FCE0-8F7E-4EA3-9335-D72FBA0D06FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

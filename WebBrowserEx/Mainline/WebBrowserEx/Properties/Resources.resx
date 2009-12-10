@@ -372,4 +372,13 @@
   <data name="WebBrowserEx_Description" xml:space="preserve">
     <value>Enables the user to browse Web pages inside your form.</value>
   </data>
+  <data name="WebBrowserEx_EventDescription_PrivacyImpactedChanged" xml:space="preserve">
+    <value>Occurs when an event impacts privacy or when a user navigates away from a URL that has impacted privacy.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_TranslateUrl" xml:space="preserve">
+    <value>Occurs when a before the Navigating event to allow the modification of the URL to be loaded.</value>
+  </data>
+  <data name="WebBrowserEx_EventDescription_WindowClosed" xml:space="preserve">
+    <value>Occurs when the window of the object has been closed.</value>
+  </data>
 </root>

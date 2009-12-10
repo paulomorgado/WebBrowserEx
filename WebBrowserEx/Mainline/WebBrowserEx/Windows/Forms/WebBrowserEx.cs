@@ -11,10 +11,16 @@ namespace PauloMorgado.Windows.Forms
 {
     using System;
     using System.Collections.Specialized;
+    using System.ComponentModel;
+    using System.Runtime.InteropServices;
+    using System.Security;
+    using System.Security.Permissions;
     using System.Windows.Forms;
+    using PauloMorgado.ComponentModel;
     using PauloMorgado.Windows.Interop;
     using PauloMorgado.Windows.WebBrowser;
     using WebBrowser = PauloMorgado.Windows.WebBrowser.WebBrowser;
+    using System.Drawing;
 
     /// <summary>
     /// Enables the user to navigate Web pages inside your form.
@@ -22,6 +28,16 @@ namespace PauloMorgado.Windows.Forms
     /// <remarks>
     /// Extends the framework's <see cref="T:System.Windows.Forms.WebBrowser"/> control.
     /// </remarks>
+    [ComVisible(true)]
+    [DefaultEvent("DocumentCompleted")]
+    [Designer("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [DefaultProperty("Url")]
+    [ClassInterface(ClassInterfaceType.AutoDispatch)]
+    [ToolboxBitmap(typeof(WebBrowserEx)/*, "WebBrowserEx.bmp"*/)]
+    [Docking(DockingBehavior.AutoDock)]
+    [ResourcesDescription("WebBrowserEx_Description")]
+    [PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
+    [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
     public partial class WebBrowserEx : global::System.Windows.Forms.WebBrowser
     {
         /// <summary>

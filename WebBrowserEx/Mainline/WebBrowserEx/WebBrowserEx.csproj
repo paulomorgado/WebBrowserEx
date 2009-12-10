@@ -190,6 +190,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Windows\Forms\WebBrowserEx.bmp" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Windows\Designer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

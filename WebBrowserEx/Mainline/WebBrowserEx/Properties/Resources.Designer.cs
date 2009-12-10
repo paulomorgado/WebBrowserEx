@@ -619,6 +619,15 @@ namespace PauloMorgado.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Occurs when an event impacts privacy or when a user navigates away from a URL that has impacted privacy..
+        /// </summary>
+        internal static string WebBrowserEx_EventDescription_PrivacyImpactedChanged {
+            get {
+                return ResourceManager.GetString("WebBrowserEx_EventDescription_PrivacyImpactedChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Occurs when the one of WebBrowserControl&apos;s property values changes..
         /// </summary>
         internal static string WebBrowserEx_EventDescription_PropertyChanged {
@@ -687,6 +696,24 @@ namespace PauloMorgado.Properties {
         internal static string WebBrowserEx_EventDescription_TheaterModeChanged {
             get {
                 return ResourceManager.GetString("WebBrowserEx_EventDescription_TheaterModeChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Occurs when a before the Navigating event to allow the modification of the URL to be loaded..
+        /// </summary>
+        internal static string WebBrowserEx_EventDescription_TranslateUrl {
+            get {
+                return ResourceManager.GetString("WebBrowserEx_EventDescription_TranslateUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Occurs when the window of the object has been closed..
+        /// </summary>
+        internal static string WebBrowserEx_EventDescription_WindowClosed {
+            get {
+                return ResourceManager.GetString("WebBrowserEx_EventDescription_WindowClosed", resourceCulture);
             }
         }
         

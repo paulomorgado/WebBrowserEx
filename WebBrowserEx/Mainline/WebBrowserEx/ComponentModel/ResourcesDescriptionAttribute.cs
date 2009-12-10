@@ -46,7 +46,7 @@ namespace PauloMorgado.ComponentModel
                 if (!this.replaced)
                 {
                     this.replaced = true;
-                    this.DescriptionValue = Properties.Resources.ResourceManager.GetString(base.Description);
+                    this.DescriptionValue = Properties.Resources.ResourceManager.GetString(base.Description) ?? base.Description;
                 }
 
                 return this.DescriptionValue;

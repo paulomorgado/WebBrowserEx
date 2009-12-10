@@ -38,7 +38,7 @@ namespace PauloMorgado.ComponentModel
         /// </returns>
         protected override string GetLocalizedString(string value)
         {
-            return Properties.Resources.ResourceManager.GetString(value);
+            return Properties.Resources.ResourceManager.GetString(value) ?? value;
         }
     }
 }
